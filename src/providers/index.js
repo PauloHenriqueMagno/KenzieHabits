@@ -1,9 +1,21 @@
-const Provider = ({children}) => {
-    return (
-        <>
-            {children}
-        </>
-    )
-}
+import { ActivitiesContext } from "./Activities";
+import { UserGroupsContext } from "./UserGroups";
+import { GroupsContext } from "./Groups";
+import { UserContext } from "./User";
+import { HabitsContext } from "./Habits";
 
-export default Provider
+const Provider = ({ children }) => {
+  return (
+    <UserContext>
+      <UserGroupsContext>
+        <ActivitiesContext>
+          <GroupsContext>
+            <HabitsContext>{children}</HabitsContext>
+          </GroupsContext>
+        </ActivitiesContext>
+      </UserGroupsContext>
+    </UserContext>
+  );
+};
+
+export default Provider;
