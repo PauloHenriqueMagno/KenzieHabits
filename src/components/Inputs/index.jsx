@@ -1,8 +1,9 @@
-const Inputs = () =>{
-    return (
-        <>
-        </>
-    )
-}
+import TextField from '@mui/material/TextField';
 
-export default Inputs
+const Inputs = ({text, value}) =>{
+    return (
+        <TextField color='primary' variant='outlined' label={text} value={value} />
+    );
+};
+
+export default Inputs;
