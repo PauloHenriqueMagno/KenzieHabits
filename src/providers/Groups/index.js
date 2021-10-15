@@ -26,7 +26,7 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const getGroups = (category, page = undefined) => {
-    if (page) {
+    if (!!page) {
       api
         .get(page)
         .then((response) => setGroups(response.data))
@@ -41,7 +41,12 @@ export const GroupsProvider = ({ children }) => {
 
   return (
     <GroupsContext.Provider
-      value={{ groups, createGroup, getGroups, subscribeOnGroup }}
+      value={{
+        groups,
+        createGroup,
+        getGroups,
+        subscribeOnGroup,
+      }}
     >
       {children}
     </GroupsContext.Provider>
