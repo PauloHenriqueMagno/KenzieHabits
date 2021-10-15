@@ -44,7 +44,12 @@ export const UserGroupsProvider = ({ children }) => {
 
   return (
     <UserGroupsContext.Provider
-      value={{ userGroups, getUserGroup, unsubscribeOnGroup, editGroup }}
+      value={{
+        userGroups,
+        getUserGroup,
+        unsubscribeOnGroup,
+        editGroup,
+      }}
     >
       {children}
     </UserGroupsContext.Provider>

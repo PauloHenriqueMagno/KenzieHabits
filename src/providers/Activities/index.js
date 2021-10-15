@@ -7,7 +7,7 @@ export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
 
   const getActivities = (groupId, page = undefined) => {
-    if (page) {
+    if (!!page) {
       api
         .get(page)
         .then((response) => setActivities(response))
