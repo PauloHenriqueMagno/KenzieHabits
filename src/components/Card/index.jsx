@@ -1,4 +1,4 @@
-import { Add, Edit } from "@material-ui/icons";
+import { Delete, Edit } from "@material-ui/icons";
 import {
   IconButton,
   FormGroup,
@@ -62,7 +62,7 @@ const Cards = () => {
       </FormGroup>
       <CardActions>
         <IconButton aria-label="add" size="small">
-          <Add fontSize="small" />
+          <Delete fontSize="small" />
         </IconButton>
 
         <IconButton aria-label="delete" size="small">
