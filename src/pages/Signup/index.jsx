@@ -5,13 +5,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useContext } from "react";
-import { UserContext } from "../../providers/User";
 import api from "../../services/api";
 
 const Signup = () => {
   const history = useHistory();
-  const { addUser } = useContext(UserContext);
   const formSchema = yup.object().shape({
     username: yup.string().required("Este campo é obrigatório"),
     email: yup
