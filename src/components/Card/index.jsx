@@ -51,15 +51,15 @@ const Cards = () => {
                 value={habits.how_much_achieved}
               />
             </Box>
+            <FormGroup>
+              <FormControlLabel
+                label="Finalizado?"
+                control={<Checkbox defaultChecked />}
+              />
+            </FormGroup>
           </div>
         ))}
       </CardContent>
-      <FormGroup>
-        <FormControlLabel
-          control={<Checkbox defaultChecked />}
-          label="Concluído"
-        />
-      </FormGroup>
       <CardActions>
         <IconButton aria-label="add" size="small">
           <Delete fontSize="small" />
