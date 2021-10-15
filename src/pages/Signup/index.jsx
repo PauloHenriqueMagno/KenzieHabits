@@ -1,14 +1,17 @@
-import { Paper } from "@material-ui/core";
-import { Container } from "./styles";
-import Inputs from "../../components/Inputs";
+import { Container, SubmitButton, Input, StyledPaper } from "./styles";
 import { useHistory } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { useContext } from "react";
+import { UserContext } from "../../providers/User";
+import api from "../../services/api";
+
 const Signup = () => {
   const history = useHistory();
+  const { addUser } = useContext(UserContext);
   const formSchema = yup.object().shape({
     username: yup.string().required("Este campo é obrigatório"),
     email: yup
@@ -30,54 +33,71 @@ const Signup = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const redirectUser = (msg) => {
+    history.push("/login");
+    console.log(msg);
+  };
+
   const formSubmit = (data) => {
-    console.log(data);
+    api
+      .post("/users/", {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      })
+      .then((response) => redirectUser(response))
+      .catch((err) => console.log(err));
   };
   return (
     <Container>
-      <Paper
-        sx={{ maxWidth: "400px", padding: "40px 30px", margin: "25px auto" }}
-      >
+      <StyledPaper>
         <div>
-          <h1>Khabitz</h1>
+          <h1>
+            K<span>habit</span>z
+          </h1>
           <p>Inscreva-se gratuitamente</p>
         </div>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <Inputs
+          <Input
             text="Username"
             register={register}
             name="username"
             error={errors.username?.message}
           />
-          <Inputs
+          <Input
             text="Email"
             register={register}
             name="email"
             error={errors.email?.message}
           />
-          <Inputs
+          <Input
             text="Password"
             register={register}
             name="password"
             error={errors.password?.message}
+            type="password"
           />
-          <Inputs
+          <Input
             text="Confirm password"
             register={register}
             name="passwordConfirm"
             error={errors.passwordConfirm?.message}
+            type="password"
           />
-          <button type="submit">Inscrever-se</button>
+          <SubmitButton type="submit">Inscrever-se</SubmitButton>
         </form>
-        <div>
+        <div className="redirect">
           <p>
             Já está inscrito?{" "}
-            <button onClick={() => history.push("/login")}>
+            <button
+              className="simpleLink"
+              onClick={() => history.push("/login")}
+            >
               Realizar login
             </button>
           </p>
         </div>
-      </Paper>
+      </StyledPaper>
     </Container>
   );
 };
