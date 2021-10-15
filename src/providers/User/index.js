@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
 
   const addUser = (user) => {
     setUser(user);
+    localStorage.setItem("khabitz/user", JSON.stringify(user));
   };
 
   const editUser = (editedUser) => {
