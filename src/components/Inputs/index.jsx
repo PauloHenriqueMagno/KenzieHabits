@@ -1,8 +1,8 @@
 import TextField from '@mui/material/TextField';
 
-const Inputs = ({text, value}) =>{
+const Inputs = ({text}) =>{
     return (
-        <TextField color='primary' variant='outlined' label={text} value={value} />
+        <TextField fullWidth color='primary' variant='outlined' label={text} />
     );
 };
 
