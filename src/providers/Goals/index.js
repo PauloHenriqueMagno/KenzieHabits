@@ -7,7 +7,7 @@ export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
 
   const getGoals = (groupId, page = undefined) => {
-    if (page) {
+    if (!!page) {
       api
         .get(page)
         .then((response) => setGoals(response))
@@ -50,7 +50,13 @@ export const GoalsProvider = ({ children }) => {
 
   return (
     <GoalsContext.Provider
-      value={{ goals, getGoals, createGoal, editGoal, deleteGoal }}
+      value={{
+        goals,
+        getGoals,
+        createGoal,
+        editGoal,
+        deleteGoal,
+      }}
     >
       {children}
     </GoalsContext.Provider>

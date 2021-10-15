@@ -59,7 +59,13 @@ export const HabitsProvider = ({ children }) => {
 
   return (
     <HabitsContext.Provider
-      value={{ habits, addHabit, editHabit, deleteHabit, getHabits }}
+      value={{
+        habits,
+        addHabit,
+        editHabit,
+        deleteHabit,
+        getHabits,
+      }}
     >
       {children}
     </HabitsContext.Provider>
