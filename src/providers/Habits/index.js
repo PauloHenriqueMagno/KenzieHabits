@@ -7,7 +7,7 @@ export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
 
   const addHabit = (newHabit) => {
-    const user = localStorage.getItem("khabtz/user");
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
       .post("/habits/", newHabit, {
         headers: {
@@ -23,7 +23,7 @@ export const HabitsProvider = ({ children }) => {
       (habitOnList) => habitOnList.id !== editedHabit.id
     );
     setHabits([newHabitsList, editedHabit]);
-    const user = localStorage.getItem("khabtz/user");
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
       .patch(`/habits/${habitId}`, editedHabit, {
         headers: {
@@ -46,7 +46,7 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const getHabits = () => {
-    const user = localStorage.getItem("khabtz/user");
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
       .get("/habits/personal/", {
         headers: {
