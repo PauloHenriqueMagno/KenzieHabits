@@ -1,5 +1,4 @@
-// import TextField from '@mui/material/TextField';
-import { TextField } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 
 const Inputs = ({ text, register, name, error = null, ...rest }) => {
   return (
