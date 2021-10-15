@@ -1,54 +1,59 @@
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import AddIcon from "@mui/icons-material/Add";
-import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import { Add, Edit } from "@material-ui/icons";
+import {
+  IconButton,
+  FormGroup,
+  FormControlLabel,
+  Card,
+  CardActions,
+  CardContent,
+  Checkbox,
+  Box,
+  styled,
+} from "@material-ui/core";
 
 import { useContext } from "react";
-// import { HabitsContext } from "../../providers/Habits";
+import { HabitsContext } from "../../providers/Habits";
 
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress";
+} from "@material-ui/core/LinearProgress";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
-  borderRadius: 5,
+  height: 25,
+  borderRadius: 30,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
+    borderRadius: 30,
     backgroundColor: theme.palette.mode === "light" ? "#F36A21" : "#F36A21",
   },
 }));
 
-const Card = () => {
-  // const { habit, setHabit } = useContext(HabitsContext);
+const Cards = () => {
+  const { habits, setHabit } = useContext(HabitsContext);
+  console.log(habits);
+
   return (
     <Card sx={{ maxWidth: 350 }}>
       <CardContent>
-        {/* {habit.map((habit, index) => (
+        {habits.map((habits, index) => (
           <div key={index}>
-            <p> {habit.title}</p>
-            <p> {habit.category}</p>
-            <p> {habit.difficulty}</p>
-            <p> {habit.frequency}</p>
+            <p> {habits.title}</p>
+            <p> {habits.category}</p>
+            <p> {habits.difficulty}</p>
+            <p> {habits.frequency}</p>
+            <Box sx={{ flexGrow: 1 }}>
+              <br />
+              <BorderLinearProgress
+                variant="determinate"
+                value={habits.how_much_achieved}
+              />
+            </Box>
           </div>
-        ))} */}
-        Olá!
+        ))}
       </CardContent>
-      <Box sx={{ flexGrow: 1 }}>
-        <br />
-        <BorderLinearProgress variant="determinate" value={20} />
-      </Box>
       <FormGroup>
         <FormControlLabel
           control={<Checkbox defaultChecked />}
@@ -57,15 +62,15 @@ const Card = () => {
       </FormGroup>
       <CardActions>
         <IconButton aria-label="add" size="small">
-          <AddIcon fontSize="small" />
+          <Add fontSize="small" />
         </IconButton>
 
         <IconButton aria-label="delete" size="small">
-          <EditIcon fontSize="small" />
+          <Edit fontSize="small" />
         </IconButton>
       </CardActions>
     </Card>
   );
 };
 
-export default Card;
+export default Cards;
