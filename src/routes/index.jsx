@@ -5,7 +5,6 @@ import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import UserGroups from '../pages/UserGroups'
 import Groups from '../pages/Groups'
-import Menu from '../components/Menu'
 
 const Routes = () =>{
     return (
@@ -27,7 +26,6 @@ const Routes = () =>{
                     <Dashboard />
                 </Route>
                 <Route path='/'>
-                    <Menu />
                     <Home />
                 </Route>
             </Switch>
