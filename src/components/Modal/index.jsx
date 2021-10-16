@@ -1,8 +1,7 @@
-const Modal = () =>{
-    return (
-        <>
-        </>
-    )
-}
+import BasicModal from "./import";
 
-export default Modal
+const Modal = ({ modalType }) => {
+  return <BasicModal modalType={modalType} />;
+};
+
+export default Modal;
