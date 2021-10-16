@@ -1,21 +1,24 @@
 import { styled } from "@material-ui/core";
 
+import backgroundImageLogin from "./background_image_login.png";
+
 export const LoginSection = styled("section")({
     width: "80%",
-    margin: "auto",
+    margin: "30px auto",
     maxWidth: "500px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
+    background: "#FFF",
+    
     h1: {
         fontFamily: "Saira Stencil One",
         fontWeight: 500,
         fontSize: "4rem",
         color: "#155B9E",
-
+        
         span: { color: "#F36A21",
-            fontSize: "3.5rem",
+        fontSize: "3.5rem",
         }
     },
 
@@ -25,16 +28,31 @@ export const LoginSection = styled("section")({
     },
 
     "@media (min-width: 769px)": {
-        border: "1px solid rgba(100,100,100, 0.5)",
-        boxShadow: "0 0 2px rgba(0,0,0,0.2)",
+        boxShadow: "0 0 2px rgba(0,0,0,0.3)",
         borderRadius: "6px",
         padding: "15px 15px 50px",
         marginTop: "30px",
-    }
+        zIndex: "1",
+    },
 });
+
+export const BackgroundImage = styled("img")({
+    display: "none",
+
+    "@media (min-width: 769px)": {
+        display: "block",
+        content: `url(${backgroundImageLogin})`,
+        position: "fixed",
+        top: "0",
+        right: "0",
+        height: "100vh",
+        zIndex: "-1",
+    }
+}) 
 
 export const Link = styled("a")({
     color: "#F36A21",
+
 });
 
 export const LoginForm = styled("form")({
@@ -45,8 +63,13 @@ export const LoginForm = styled("form")({
     alignItems: "center",
     gap: "15px",
 
-    h3: {
+
+    p: {
         fontFamily: "Rosario",
+        fontWeight: 700,
+        fontSize: "1.6rem",
+        textAlign: "left",
+        width: "100%",
         margin: "15px 0 35px 0",
     },
 
