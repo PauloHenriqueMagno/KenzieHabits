@@ -50,7 +50,7 @@ export default function BasicModal({ modalType }) {
     console.log(data);
   };
 
-  return modalType === "createHabit" ? (
+  return modalType === "CreateHabit" ? (
     <ThemeProvider theme={theme}>
       <Button onClick={handleOpen}>Criar hábito</Button>
       <Modal
