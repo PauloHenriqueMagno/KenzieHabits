@@ -7,6 +7,9 @@ import UserGroups from '../pages/UserGroups'
 import Groups from '../pages/Groups'
 import Menu from '../components/Menu'
 
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 const Routes = () =>{
     return (
         <>
@@ -31,6 +34,17 @@ const Routes = () =>{
                     <Home />
                 </Route>
             </Switch>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </>
     )
 }
