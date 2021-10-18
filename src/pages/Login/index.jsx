@@ -3,11 +3,13 @@ import { LoginSection, LoginForm, Link, BackgroundImage } from "./styled";
 
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
+import jwt_decode from "jwt-decode";
+
 import { UserContext } from "../../providers/User";
 import { useContext } from "react";
 
@@ -24,11 +26,19 @@ const Login = () =>{
         api
             .post("/sessions/", data)
             .then(response => {
-                addUser(response.data)
-                history.push("/dashboard")
-                toast.success("Conta acessada")
+                const id = jwt_decode(response.data.access).user_id;
+                const access = response.data.access;
+                
+                api
+                    .get(`/users/${id}/`)
+                    .then(response => {
+                        addUser({...response.data, access})
+                        history.push("/dashboard");
+                        toast.success("Conta acessada");
+                    });
             })
             .catch(err => toast.error("Dados incorretos"));
+            
     };
 
     const {
@@ -74,7 +84,7 @@ const Login = () =>{
             </LoginSection>
             <BackgroundImage alt="background_image" />
          </>
-    )
+    );
 };
 
 export default Login;
