@@ -138,6 +138,108 @@ const updateGroupData = {
     console.log(newData);
   },
 };
+const createGoalData = {
+  search: "CreateGoal",
+  triggerBtn: "Criar objetivo",
+  concludeBtn: "Criar objetivo",
+  title: "Crie aqui seu objetivo",
+  schema: {
+    title: yup.string().required(),
+    difficulty: yup.string().required(),
+    how_much_achieved: yup.number().required(),
+  },
+  label_register: [
+    { text: "título do objetivo", name: "title" },
+    { text: "dificuldade", name: "difficulty" },
+    { text: "quanto já concluiu", name: "how_much_achieved" },
+  ],
+  dataCaptor: (data) => {
+    const { title, difficulty, how_much_achieved } = data;
+    const newData = {
+      title: title,
+      difficulty: difficulty,
+      how_much_achieved: how_much_achieved,
+    };
+    console.log(newData);
+  },
+};
+const updateGoalData = {
+  search: "UpdateGoal",
+  triggerBtn: "Editar objetivo",
+  concludeBtn: "Editar objetivo",
+  title: "Edite aqui seu objetivo",
+  schema: {
+    title: yup.string().required(),
+    difficulty: yup.string().required(),
+    how_much_achieved: yup.number().required(),
+  },
+  label_register: [
+    { text: "título do objetivo", name: "title" },
+    { text: "dificuldade", name: "difficulty" },
+    { text: "quanto já concluiu", name: "how_much_achieved" },
+  ],
+  dataCaptor: (data) => {
+    const { title, difficulty, how_much_achieved } = data;
+    const newData = {
+      title: title,
+      difficulty: difficulty,
+      how_much_achieved: how_much_achieved,
+    };
+    console.log(newData);
+  },
+};
+const createActivityData = {
+  search: "CreateActivity",
+  triggerBtn: "Criar Atividade",
+  concludeBtn: "Criar Atividade",
+  title: "Crie sua nova atividade",
+  schema: {
+    title: yup.string().required(),
+    realization_time: yup.string().required(),
+    group: yup.number().required(),
+  },
+  label_register: [
+    { text: "título da atividade", name: "title" },
+    { text: "", name: "realization_time" },
+    { text: "", name: "group" },
+  ],
+  dataCaptor: (data) => {
+    const { title, realization_time, group } = data;
+    const newData = {
+      title: title,
+      realization_time: realization_time,
+      group: group,
+    };
+    console.log(newData);
+  },
+};
+const updateActivityData = {
+  search: "UpdateActivity",
+  triggerBtn: "Editar atividade",
+  concludeBtn: "Editar atividade",
+  title: "Crie sua nova atividade",
+  schema: {
+    title: yup.string().required(),
+    difficulty: yup.string().required(),
+    how_much_achieved: yup.number().required(),
+  },
+  label_register: [
+    { text: "título da atividade", name: "title" },
+    { text: "", name: "realization_time" },
+    { text: "", name: "group" },
+  ],
+  dataCaptor: (data) => {
+    const { title, realization_time, group } = data;
+    const newData = {
+      title: title,
+      realization_time: realization_time,
+      group: group,
+    };
+    console.log(newData);
+    data = undefined
+    console.log(newData);
+  },
+};
 
 export const allData = [
   createHabitData,
@@ -145,4 +247,8 @@ export const allData = [
   updateUserNameData,
   createGroupData,
   updateGroupData,
+  createGoalData,
+  updateGoalData,
+  createActivityData,
+  updateActivityData,
 ];

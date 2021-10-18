@@ -4,9 +4,9 @@ export const theme = createTheme({
   breakpoints: {
     values: {
       mobile: 0,
-      tablet: 0,
-      laptop: 0,
-      desktop: 769,
+      tablet: 400,
+      laptop: 550,
+      desktop: 700,
     },
   },
 });
@@ -34,8 +34,8 @@ export const style = {
     color: "rgb(228, 148, 102)",
     fontSize: "35px",
     position: "absolute",
-    left: "90%",
-    top: "5%"
+    left: "87%",
+    top: "4%"
   },
   ".closeBtn:hover": {
     cursor:"pointer"
@@ -43,11 +43,12 @@ export const style = {
   "form": {
     display: "flex",
     flexDirection: "column",
+    width: {mobile: "85%", desktop: "425"},
+    alignSelf: "center"
   },
   ".input": {
     alignSelf: "center",
     margin: "15px",
-    width: { mobile: "90%", desktop: 425 },
     bgcolor: "white",
     borderRadius: "4px",
   },

@@ -12,6 +12,14 @@ const Modal = ({ modalType }) => {
     <BasicModal Data={allData[3]} />
   ) : modalType === allData[4].search ? (
     <BasicModal Data={allData[4]} />
+  ) : modalType === allData[5].search ? (
+    <BasicModal Data={allData[5]} />
+  ) : modalType === allData[6].search ? (
+    <BasicModal Data={allData[6]} />
+  ) : modalType === allData[7].search ? (
+    <BasicModal Data={allData[7]} />
+  ) : modalType === allData[8].search ? (
+    <BasicModal Data={allData[8]} />
   ) : null;
 };
 
