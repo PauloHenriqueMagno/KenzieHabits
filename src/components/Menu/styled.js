@@ -1,4 +1,4 @@
-import { styled } from "@material-ui/core"
+import { styled } from "@material-ui/core";
 
 export const HeaderMenu = styled("header")({
     width: "100%",
@@ -15,13 +15,14 @@ export const HeaderMenu = styled("header")({
         h1: {
             fontFamily: "Saira Stencil One",
             fontWeight: 500,
-            fontSize: "3rem",
+            fontSize: "5rem",
             color: "#155B9E",
+            cursor: "pointer",
     
             span: {
                 color: "#F36A21",
-                fontSize: "2.6rem",
-            }
+                fontSize: "0.86em",
+            },
         },
 
         nav: {
@@ -30,10 +31,14 @@ export const HeaderMenu = styled("header")({
                 backgroundColor: "transparent",
                 color: "#5D6A5A",
                 fontFamily: "Rosario",
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 cursor: "pointer",
-            }
-        }
+
+                "&:hover": {
+                    textDecoration: "underline",
+                }
+            },
+        },
     },
 
     "@media (min-width: 769px)" : {
@@ -41,14 +46,19 @@ export const HeaderMenu = styled("header")({
         ".container": {
             flexDirection: "row-reverse",
 
+            "h1": {
+                fontSize: "3rem",
+            },
+
             "nav":{
                 marginRight: "35px",
 
                 "button": {
                     margin: "0 10px",
-                }
+                    fontSize: "1rem",
+                },
             },
-        }
+        },
         
     },
 });

@@ -1,4 +1,4 @@
-import {HeaderMenu} from "./styled.jsx"
+import { HeaderMenu } from "./styled.js";
 import { useHistory } from "react-router";
 
 const Menu = () => {
