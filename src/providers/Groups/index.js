@@ -8,7 +8,7 @@ export const GroupsProvider = ({ children }) => {
 
   const subscribeOnGroup = (groupToSubscribe) => {
     api
-      .post(`/groups/${groupToSubscribe.id}/subscribe`)
+      .post(`/groups/${groupToSubscribe}/subscribe`)
       .then()
       .catch((err) => console.log(err));
   };
@@ -25,7 +25,7 @@ export const GroupsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const getGroups = (category, page = undefined) => {
+  const getGroups = (category = "", page = undefined) => {
     if (!!page) {
       api
         .get(page)
@@ -34,11 +34,11 @@ export const GroupsProvider = ({ children }) => {
     } else {
       api
         .get(`/groups/?category=${category}`)
-        .then((response) => setGroups(response))
+        .then((response) => setGroups(response.data))
         .catch((err) => console.log(err));
     }
   };
-
+  console.log(groups);
   return (
     <GroupsContext.Provider
       value={{
