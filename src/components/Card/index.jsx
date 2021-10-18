@@ -32,44 +32,46 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 const Cards = () => {
-  const { habits, setHabit } = useContext(HabitsContext);
+  const { habits, deleteHabit, editHabit } = useContext(HabitsContext);
   console.log(habits);
 
   return (
-    <Card sx={{ maxWidth: 350 }}>
-      <CardContent>
-        {habits.map((habits, index) => (
-          <div key={index}>
-            <p> {habits.title}</p>
-            <p> {habits.category}</p>
-            <p> {habits.difficulty}</p>
-            <p> {habits.frequency}</p>
-            <Box sx={{ flexGrow: 1 }}>
-              <br />
-              <BorderLinearProgress
-                variant="determinate"
-                value={habits.how_much_achieved}
-              />
-            </Box>
-            <FormGroup>
-              <FormControlLabel
-                label="Finalizado?"
-                control={<Checkbox defaultChecked />}
-              />
-            </FormGroup>
-          </div>
-        ))}
-      </CardContent>
-      <CardActions>
-        <IconButton aria-label="add" size="small">
-          <Delete fontSize="small" />
-        </IconButton>
+    <>
+      {habits.map((habits, index) => (
+        <div key={index}>
+          <Card>
+            <CardContent>
+              <p> {habits.title}</p>
+              <p> {habits.category}</p>
+              <p> {habits.difficulty}</p>
+              <p> {habits.frequency}</p>
+              <Box sx={{ flexGrow: 1 }}>
+                <br />
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={habits.how_much_achieved}
+                />
+              </Box>
+              <FormGroup>
+                <FormControlLabel
+                  label="Finalizado?"
+                  control={<Checkbox defaultChecked />}
+                />
+              </FormGroup>
+              <CardActions>
+                <IconButton aria-label="add" size="small">
+                  <Delete onClick={deleteHabit} fontSize="small" />
+                </IconButton>
 
-        <IconButton aria-label="delete" size="small">
-          <Edit fontSize="small" />
-        </IconButton>
-      </CardActions>
-    </Card>
+                <IconButton aria-label="delete" size="small">
+                  <Edit onClick={editHabit} fontSize="small" />
+                </IconButton>
+              </CardActions>
+            </CardContent>
+          </Card>
+        </div>
+      ))}
+    </>
   );
 };
 
