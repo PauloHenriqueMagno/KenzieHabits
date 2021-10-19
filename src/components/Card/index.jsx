@@ -14,7 +14,6 @@ import { HabitsContext } from "../../providers/Habits";
 
 const Cards = () => {
   const { habits, deleteHabit, editHabit } = useContext(HabitsContext);
-  console.log(habits);
 
   return (
     <>
