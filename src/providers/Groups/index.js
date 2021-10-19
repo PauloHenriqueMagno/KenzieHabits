@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export const GroupsContext = createContext([]);
@@ -7,9 +8,18 @@ export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
 
   const subscribeOnGroup = (groupToSubscribe) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .post(`/groups/${groupToSubscribe}/subscribe`)
-      .then()
+      .post(
+        `/groups/${groupToSubscribe}/subscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((_) => toast.info(`Inscrição realizada com sucesso!`))
       .catch((err) => console.log(err));
   };
 
@@ -21,7 +31,7 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then()
+      .then((_) => toast.info(`Grupo criado com sucesso!`))
       .catch((err) => console.log(err));
   };
 
@@ -38,7 +48,6 @@ export const GroupsProvider = ({ children }) => {
         .catch((err) => console.log(err));
     }
   };
-  console.log(groups);
   return (
     <GroupsContext.Provider
       value={{
