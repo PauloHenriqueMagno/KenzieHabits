@@ -15,11 +15,11 @@ const createHabitData = {
       .required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título", name: "title" },
-    { text: "categoria", name: "category" },
-    { text: "dificuldade", name: "difficulty" },
-    { text: "frequência", name: "frequency" },
-    { text: "quanto já foi concluído", name: "how_much_achieved" },
+    { type:"text", text: "título", name: "title" },
+    { type:"text", text: "categoria", name: "category" },
+    { type:"text", text: "dificuldade", name: "difficulty" },
+    { type:"text", text: "frequência", name: "frequency" },
+    { type:"number", text: "quanto já foi concluído", name: "how_much_achieved" },
   ],
   dataCaptor: (data) => {
     const { title, category, difficulty, frequency, how_much_achieved } = data;
@@ -35,7 +35,7 @@ const createHabitData = {
 };
 
 const updateHabitData = {
-  search: "EditUserName",
+  search: "UpdateHabit",
   triggerBtn: "Editar hábito",
   concludeBtn: "Editar hábito",
   title: "Edite as informações do seu hábito",
@@ -49,11 +49,11 @@ const updateHabitData = {
       .required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título", name: "title" },
-    { text: "categoria", name: "category" },
-    { text: "dificuldade", name: "difficulty" },
-    { text: "frequência", name: "frequency" },
-    { text: "quanto já foi concluído", name: "how_much_achieved" },
+    { type:"text", text: "título", name: "title" },
+    { type:"text", text: "categoria", name: "category" },
+    { type:"text", text: "dificuldade", name: "difficulty" },
+    { type:"text", text: "frequência", name: "frequency" },
+    { type:"number", text: "quanto já foi concluído", name: "how_much_achieved" },
   ],
   dataCaptor: (data) => {
     const { title, category, difficulty, frequency, how_much_achieved } = data;
@@ -69,7 +69,7 @@ const updateHabitData = {
 };
 
 const updateUserNameData = {
-  search: "UpdateUser",
+  search: "UpdateUserName",
   triggerBtn: "Editar nome de usuário",
   concludeBtn: "Altere aqui seus dados",
   title: "Editar",
@@ -87,8 +87,8 @@ const updateUserNameData = {
       .required("Campo obrigatório"),
   },
   label_register: [
-    { text: "Nome de usuário", name: "username" },
-    { text: "email", name: "email" },
+    { type:"text", text: "Nome de usuário", name: "username" },
+    { type:"text", text: "email", name: "email" },
   ],
   dataCaptor: (data) => {
     const { username, email } = data;
@@ -111,9 +111,9 @@ const createGroupData = {
     category: yup.string().required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título do grupo", name: "name" },
-    { text: "categoria", name: "description" },
-    { text: "descrição", name: "category" },
+    { type:"text", text: "título do grupo", name: "name" },
+    { type:"text", text: "categoria", name: "description" },
+    { type:"text", text: "descrição", name: "category" },
   ],
   dataCaptor: (data) => {
     const { name, description, category } = data;
@@ -127,7 +127,7 @@ const createGroupData = {
 };
 
 const updateGroupData = {
-  search: "UpdateHabit",
+  search: "UpdateGroup",
   triggerBtn: "Editar grupo",
   concludeBtn: "Editar grupo",
   title: "Edite aqui seu grupo",
@@ -137,9 +137,9 @@ const updateGroupData = {
     category: yup.string().required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título do grupo", name: "name" },
-    { text: "categoria", name: "description" },
-    { text: "descrição", name: "category" },
+    { type:"text", text: "título do grupo", name: "name" },
+    { type:"text", text: "categoria", name: "description" },
+    { type:"text", text: "descrição", name: "category" },
   ],
   dataCaptor: (data) => {
     const { name, description, category } = data;
@@ -164,9 +164,9 @@ const createGoalData = {
       .required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título do objetivo", name: "title" },
-    { text: "dificuldade", name: "difficulty" },
-    { text: "quanto já concluiu", name: "how_much_achieved" },
+    { type:"text", text: "título do objetivo", name: "title" },
+    { type:"text", text: "dificuldade", name: "difficulty" },
+    { type:"number", text: "quanto já concluiu", name: "how_much_achieved" },
   ],
   dataCaptor: (data) => {
     const { title, difficulty, how_much_achieved } = data;
@@ -191,9 +191,9 @@ const updateGoalData = {
       .required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título do objetivo", name: "title" },
-    { text: "dificuldade", name: "difficulty" },
-    { text: "quanto já concluiu", name: "how_much_achieved" },
+    { type:"text", text: "título do objetivo", name: "title" },
+    { type:"text", text: "dificuldade", name: "difficulty" },
+    { type:"number", text: "quanto já concluiu", name: "how_much_achieved" },
   ],
   dataCaptor: (data) => {
     const { title, difficulty, how_much_achieved } = data;
@@ -215,8 +215,8 @@ const createActivityData = {
     realization_time: yup.string().required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título da atividade", name: "title" },
-    { text: "", name: "realization_time" },
+    { type:"text", text: "título da atividade", name: "title" },
+    { type:"datetime-local", text: "", name: "realization_time" },
   ],
   dataCaptor: (data) => {
     const { title, realization_time } = data;
@@ -237,8 +237,8 @@ const updateActivityData = {
     realization_time: yup.string().required("Campo obrigatório"),
   },
   label_register: [
-    { text: "título da atividade", name: "title" },
-    { text: "", name: "realization_time" },
+    { type:"text", text: "título da atividade", name: "title" },
+    { type:"datetime-local", text: "", name: "realization_time" },
   ],
   dataCaptor: (data) => {
     const { title, realization_time } = data;

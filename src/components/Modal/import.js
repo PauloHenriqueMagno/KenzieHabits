@@ -64,13 +64,9 @@ export default function BasicModal({ Data, apiAction }) {
             <form onSubmit={handleSubmit(handleButton)}>
               {Data.label_register.map((item, index) => (
                 <Inputs
-                  type={
-                    (Data.search === "CreateActivity") & (index === 1)
-                      ? "datetime-local"
-                      : (Data.search === "UpdateActivity") & (index === 1)
-                      ? "datetime-local"
-                      : null
-                  }
+                  type={item.type}
+                  min={item.type === "number" ? 1 : null}
+                  max={item.type === "number" ? 10 : null}
                   key={index}
                   error={error}
                   register={register}
