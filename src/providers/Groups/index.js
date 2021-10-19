@@ -28,7 +28,7 @@ export const GroupsProvider = ({ children }) => {
   const getGroups = (category = "", page = undefined) => {
     if (!!page) {
       api
-        .get(page)
+        .get(`/groups/?category=${category}&page=${page}`)
         .then((response) => setGroups(response.data))
         .catch((err) => console.log(err));
     } else {
