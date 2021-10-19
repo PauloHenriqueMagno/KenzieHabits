@@ -1562,12 +1562,11 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
-<<<<<<< HEAD
 "@material-ui/styles@^4.11.4":
   version "4.11.4"
   resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.11.4.tgz#eb9dfccfcc2d208243d986457dff025497afa00d"
   integrity sha512-KNTIZcnj/zprG5LW0Sao7zw+yG3O35pviHzejMdcSGCdWbiO8qzRgOYL8JAxAsWBKOKYwVZxXtHWaB5T2Kvxew==
-=======
+  
 "@material-ui/private-theming@5.0.0-beta.5":
   version "5.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@material-ui/private-theming/-/private-theming-5.0.0-beta.5.tgz#b8168bd15a609a78bf411e5afac2f38b513b5f18"
@@ -1581,7 +1580,6 @@
   version "5.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@material-ui/styled-engine-sc/-/styled-engine-sc-5.0.0-beta.5.tgz#705398cbee3c8e815b8747399d174508405991e8"
   integrity sha512-K42+wyGSFcdmd088wa5gkYZ/ar1YZxuXzfoBRLPD4yhAXTo5KJTl7bgZoFzvKATsQvi7J4wK8Z2Jj7g7ri8GrA==
->>>>>>> 096385bc6c2c12f715fd97423961def15d48274e
   dependencies:
     prop-types "^15.7.2"
 
