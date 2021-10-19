@@ -11,6 +11,14 @@ export const theme = createTheme({
   },
 });
 
+export const ButtonTrigger = {
+  fontSize: "35px",
+  color: "#F36A21",
+  ":hover": {
+    cursor: "pointer",
+  },
+};
+
 export const style = {
   position: "absolute",
   top: "50%",
@@ -35,16 +43,16 @@ export const style = {
     fontSize: "35px",
     position: "absolute",
     left: "87%",
-    top: "4%"
+    top: "4%",
   },
   ".closeBtn:hover": {
-    cursor:"pointer"
+    cursor: "pointer",
   },
-  "form": {
+  form: {
     display: "flex",
     flexDirection: "column",
-    width: {mobile: "85%", desktop: "425"},
-    alignSelf: "center"
+    width: { mobile: "85%", desktop: "425" },
+    alignSelf: "center",
   },
   ".input": {
     alignSelf: "center",

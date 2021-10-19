@@ -6,11 +6,13 @@ const createHabitData = {
   concludeBtn: "Criar hábito",
   title: "Escreva mais sobre seu novo hábito",
   schema: {
-    title: yup.string().required(),
-    category: yup.string().required(),
-    difficulty: yup.string().required(),
-    frequency: yup.string().required(),
-    how_much_achieved: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    category: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
+    frequency: yup.string().required("Campo obrigatório"),
+    how_much_achieved: yup
+      .number("Insira um valor numérico")
+      .required("Campo obrigatório"),
   },
   label_register: [
     { text: "título", name: "title" },
@@ -28,7 +30,7 @@ const createHabitData = {
       frequency: frequency,
       how_much_achieved: how_much_achieved,
     };
-    console.log(newData);
+    return newData;
   },
 };
 
@@ -38,11 +40,13 @@ const updateHabitData = {
   concludeBtn: "Editar hábito",
   title: "Edite as informações do seu hábito",
   schema: {
-    title: yup.string().required(),
-    category: yup.string().required(),
-    difficulty: yup.string().required(),
-    frequency: yup.string().required(),
-    how_much_achieved: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    category: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
+    frequency: yup.string().required("Campo obrigatório"),
+    how_much_achieved: yup
+      .number("Insira um valor numérico")
+      .required("Campo obrigatório"),
   },
   label_register: [
     { text: "título", name: "title" },
@@ -60,7 +64,7 @@ const updateHabitData = {
       frequency: frequency,
       how_much_achieved: how_much_achieved,
     };
-    console.log(newData);
+    return newData;
   },
 };
 
@@ -70,8 +74,17 @@ const updateUserNameData = {
   concludeBtn: "Altere aqui seus dados",
   title: "Editar",
   schema: {
-    username: yup.string().required(),
-    email: yup.string().required(),
+    username: yup
+      .string()
+      .required()
+      .matches(
+        /^[\S]{1,}$/gi,
+        "O nome de usuário não deve conter espaço em branco"
+      ),
+    email: yup
+      .string()
+      .email("Insira um email válido")
+      .required("Campo obrigatório"),
   },
   label_register: [
     { text: "Nome de usuário", name: "username" },
@@ -83,7 +96,7 @@ const updateUserNameData = {
       username: username,
       email: email,
     };
-    console.log(newData);
+    return newData;
   },
 };
 
@@ -93,9 +106,9 @@ const createGroupData = {
   concludeBtn: "Criar grupo",
   title: "Escreva mais sobre seu novo grupo",
   schema: {
-    name: yup.string().required(),
-    description: yup.string().required(),
-    category: yup.string().required(),
+    name: yup.string().required("Campo obrigatório"),
+    description: yup.string().required("Campo obrigatório"),
+    category: yup.string().required("Campo obrigatório"),
   },
   label_register: [
     { text: "título do grupo", name: "name" },
@@ -109,7 +122,7 @@ const createGroupData = {
       description: description,
       category: category,
     };
-    console.log(newData);
+    return newData;
   },
 };
 
@@ -119,9 +132,9 @@ const updateGroupData = {
   concludeBtn: "Editar grupo",
   title: "Edite aqui seu grupo",
   schema: {
-    name: yup.string().required(),
-    description: yup.string().required(),
-    category: yup.string().required(),
+    name: yup.string().required("Campo obrigatório"),
+    description: yup.string().required("Campo obrigatório"),
+    category: yup.string().required("Campo obrigatório"),
   },
   label_register: [
     { text: "título do grupo", name: "name" },
@@ -135,7 +148,7 @@ const updateGroupData = {
       description: description,
       category: category,
     };
-    console.log(newData);
+    return newData;
   },
 };
 const createGoalData = {
@@ -144,9 +157,11 @@ const createGoalData = {
   concludeBtn: "Criar objetivo",
   title: "Crie aqui seu objetivo",
   schema: {
-    title: yup.string().required(),
-    difficulty: yup.string().required(),
-    how_much_achieved: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
+    how_much_achieved: yup
+      .number("Insira um valor numérico")
+      .required("Campo obrigatório"),
   },
   label_register: [
     { text: "título do objetivo", name: "title" },
@@ -160,7 +175,7 @@ const createGoalData = {
       difficulty: difficulty,
       how_much_achieved: how_much_achieved,
     };
-    console.log(newData);
+    return newData;
   },
 };
 const updateGoalData = {
@@ -169,9 +184,11 @@ const updateGoalData = {
   concludeBtn: "Editar objetivo",
   title: "Edite aqui seu objetivo",
   schema: {
-    title: yup.string().required(),
-    difficulty: yup.string().required(),
-    how_much_achieved: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
+    how_much_achieved: yup
+      .number("Insira um valor numérico")
+      .required("Campo obrigatório"),
   },
   label_register: [
     { text: "título do objetivo", name: "title" },
@@ -185,7 +202,7 @@ const updateGoalData = {
       difficulty: difficulty,
       how_much_achieved: how_much_achieved,
     };
-    console.log(newData);
+    return newData;
   },
 };
 const createActivityData = {
@@ -194,23 +211,20 @@ const createActivityData = {
   concludeBtn: "Criar Atividade",
   title: "Crie sua nova atividade",
   schema: {
-    title: yup.string().required(),
-    realization_time: yup.string().required(),
-    group: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    realization_time: yup.string().required("Campo obrigatório"),
   },
   label_register: [
     { text: "título da atividade", name: "title" },
     { text: "", name: "realization_time" },
-    { text: "", name: "group" },
   ],
   dataCaptor: (data) => {
-    const { title, realization_time, group } = data;
+    const { title, realization_time } = data;
     const newData = {
       title: title,
       realization_time: realization_time,
-      group: group,
     };
-    console.log(newData);
+    return newData;
   },
 };
 const updateActivityData = {
@@ -219,25 +233,20 @@ const updateActivityData = {
   concludeBtn: "Editar atividade",
   title: "Crie sua nova atividade",
   schema: {
-    title: yup.string().required(),
-    difficulty: yup.string().required(),
-    how_much_achieved: yup.number().required(),
+    title: yup.string().required("Campo obrigatório"),
+    realization_time: yup.string().required("Campo obrigatório"),
   },
   label_register: [
     { text: "título da atividade", name: "title" },
     { text: "", name: "realization_time" },
-    { text: "", name: "group" },
   ],
   dataCaptor: (data) => {
-    const { title, realization_time, group } = data;
+    const { title, realization_time } = data;
     const newData = {
       title: title,
       realization_time: realization_time,
-      group: group,
     };
-    console.log(newData);
-    data = undefined
-    console.log(newData);
+    return newData;
   },
 };
 
