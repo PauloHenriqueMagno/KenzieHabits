@@ -34,7 +34,7 @@ const Login = () =>{
                     .then(response => {
                         addUser({...response.data, access})
                         history.push("/dashboard");
-                        toast.success("Conta acessada");
+                        toast.info(`Bem vindo, ${response.data.username}`);
                     });
             })
             .catch(err => toast.error("Dados incorretos"));

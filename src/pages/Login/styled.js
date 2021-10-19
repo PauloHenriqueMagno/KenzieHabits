@@ -16,6 +16,7 @@ export const LoginSection = styled("section")({
         fontWeight: 500,
         fontSize: "4rem",
         color: "#155B9E",
+        cursor: "pointer",
         
         span: { color: "#F36A21",
         fontSize: "3.5rem",
@@ -27,7 +28,7 @@ export const LoginSection = styled("section")({
         marginLeft: "auto",
     },
 
-    "@media (min-width: 769px)": {
+    "@media (min-width: 700px)": {
         boxShadow: "0 0 2px rgba(0,0,0,0.3)",
         borderRadius: "6px",
         padding: "15px 15px 50px",
@@ -39,7 +40,7 @@ export const LoginSection = styled("section")({
 export const BackgroundImage = styled("img")({
     display: "none",
 
-    "@media (min-width: 769px)": {
+    "@media (min-width: 700px)": {
         display: "block",
         content: `url(${backgroundImageLogin})`,
         position: "fixed",
@@ -48,11 +49,11 @@ export const BackgroundImage = styled("img")({
         height: "100vh",
         zIndex: "-1",
     }
-}) 
+});
 
 export const Link = styled("a")({
     color: "#F36A21",
-
+    cursor: "pointer",
 });
 
 export const LoginForm = styled("form")({
