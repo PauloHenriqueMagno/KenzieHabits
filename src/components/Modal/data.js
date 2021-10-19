@@ -69,7 +69,7 @@ const updateHabitData = {
 };
 
 const updateUserNameData = {
-  search: "CreateGroup",
+  search: "UpdateUser",
   triggerBtn: "Editar nome de usuário",
   concludeBtn: "Altere aqui seus dados",
   title: "Editar",
@@ -101,7 +101,7 @@ const updateUserNameData = {
 };
 
 const createGroupData = {
-  search: "UpdateGroup",
+  search: "CreateGroup",
   triggerBtn: "Criar grupo",
   concludeBtn: "Criar grupo",
   title: "Escreva mais sobre seu novo grupo",
