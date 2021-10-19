@@ -21,22 +21,21 @@ import {
 } from "./styles";
 
 import { GroupsContext } from "../../providers/Groups";
-import AddButton from "../../components/AddButton";
-import Menu from "../../components/Menu";
+import Modal from "../../components/Modal";
 import Header from "../../components/Header";
 
 const Groups = () => {
   const [expanded, setExpanded] = useState(false);
   const [page, setPage] = useState(0);
 
-  const { groups, getGroups } = useContext(GroupsContext);
+  const { groups, getGroups, subscribeOnGroup } = useContext(GroupsContext);
 
   useEffect(() => {
     getGroups();
   }, []);
 
   const subscribeToGroup = (groupId) => {
-    console.log(groupId);
+    subscribeOnGroup(groupId);
   };
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -47,6 +46,7 @@ const Groups = () => {
     getGroups("", newPage + 1);
     setPage(newPage);
   };
+
   return (
     <Container>
       <Header />
@@ -150,7 +150,7 @@ const Groups = () => {
           })}
         </StyledPaper>
       </Content>
-      <AddButton />
+      <Modal modalType="CreateGroup" />
     </Container>
   );
 };
