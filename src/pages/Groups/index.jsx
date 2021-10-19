@@ -21,6 +21,9 @@ import {
 } from "./styles";
 
 import { GroupsContext } from "../../providers/Groups";
+import AddButton from "../../components/AddButton";
+import Menu from "../../components/Menu";
+import Header from "../../components/Header";
 
 const Groups = () => {
   const [expanded, setExpanded] = useState(false);
@@ -46,6 +49,7 @@ const Groups = () => {
   };
   return (
     <Container>
+      <Header />
       <Content>
         <StyledPaper>
           <StyledBox>
@@ -146,6 +150,7 @@ const Groups = () => {
           })}
         </StyledPaper>
       </Content>
+      <AddButton />
     </Container>
   );
 };

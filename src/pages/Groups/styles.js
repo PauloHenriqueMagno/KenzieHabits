@@ -23,7 +23,7 @@ export const Content = styled("div")({
   backgroundColor: "#F2F2F2",
   maxWidth: "1280px",
   width: "90%",
-  margin: "50px auto",
+  margin: "0 auto",
   minHeight: "90vh",
   borderRadius: "1%",
 });
