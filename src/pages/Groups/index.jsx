@@ -90,52 +90,48 @@ const Groups = () => {
                   <AccordionSummaryText>{group.category}</AccordionSummaryText>
                 </StyledAccordionSummary>
                 <StyledAccordionDetails>
-                  <Typography
-                    sx={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <div>
-                      <Typography>Atividades disponíveis:</Typography>
-                      <List>
-                        {group.activities.length !== 0 ? (
-                          group.activities.map((activitie) => {
-                            return (
-                              <ListItem>
-                                <ListItemText primary={activitie.title} />
-                              </ListItem>
-                            );
-                          })
-                        ) : (
-                          <Typography>
-                            Nenhuma atividade disponivel no momento
-                          </Typography>
-                        )}
-                      </List>
-                    </div>
-                    <div>
-                      <Typography>Objetivos do grupo:</Typography>
-                      <List>
-                        {group.goals.length !== 0 ? (
-                          group.goals.map((goal) => {
-                            return (
-                              <ListItem>
-                                <ListItemText primary={goal.title} />
-                              </ListItem>
-                            );
-                          })
-                        ) : (
-                          <Typography>
-                            Nenhuma atividade disponivel no momento
-                          </Typography>
-                        )}
-                      </List>
-                    </div>
-                    <div>
-                      <Typography>
-                        Este grupo tem {group.users_on_group.length} membros
-                        ativos no momento
-                      </Typography>
-                    </div>
-                  </Typography>
+                  <div>
+                    <Typography>Atividades disponíveis:</Typography>
+                    <List>
+                      {group.activities.length !== 0 ? (
+                        group.activities.map((activitie) => {
+                          return (
+                            <ListItem>
+                              <ListItemText primary={activitie.title} />
+                            </ListItem>
+                          );
+                        })
+                      ) : (
+                        <Typography>
+                          Nenhuma atividade disponivel no momento
+                        </Typography>
+                      )}
+                    </List>
+                  </div>
+                  <div className="goalsList">
+                    <Typography>Objetivos do grupo:</Typography>
+                    <List>
+                      {group.goals.length !== 0 ? (
+                        group.goals.map((goal) => {
+                          return (
+                            <ListItem>
+                              <ListItemText primary={goal.title} />
+                            </ListItem>
+                          );
+                        })
+                      ) : (
+                        <Typography>
+                          Nenhuma atividade disponivel no momento
+                        </Typography>
+                      )}
+                    </List>
+                  </div>
+                  <div>
+                    <Typography>
+                      Este grupo tem {group.users_on_group.length} membros
+                      ativos no momento
+                    </Typography>
+                  </div>
                 </StyledAccordionDetails>
                 <AccordionActions>
                   <StyledButton
