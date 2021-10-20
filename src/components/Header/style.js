@@ -22,9 +22,13 @@ export const Logo = styled(Link)({
 export const Container = styled('div')({
   backgroundColor: '#F36A21',
   padding: '20px 0',
+  maxWidth: '1280px',
+  margin: 'auto',
 
   '@media (min-width: 700px)': {
     backgroundColor: '#FFF',
+    padding: '20px',
+
     '& div': {
       display: 'flex',
       justifyContent: 'space-between',
@@ -43,6 +47,7 @@ export const Avatar = styled('div')({
   borderRadius: '50%',
 
   '& svg': {
+    color: '#FFF',
     fontSize: '40px'
   },
 
@@ -52,7 +57,8 @@ export const Avatar = styled('div')({
     width: '50px',
 
     '& svg': {
-      fontSize: '50px'
+      fontSize: '50px',
+      color: '#555'
     }
   }
 });
