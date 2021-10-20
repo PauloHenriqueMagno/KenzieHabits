@@ -5,12 +5,12 @@ import {
     TitleDescription,
 } from "./styled.js";
 
-const GroupsList = ({groupList}) =>{
+const GroupsList = ({groupList}) => {
     const history = useHistory();
 
     const maxString = (string) => {
-        return string.length > 50? string.slice(0,50) + "..." : string
-    }
+        return string.length > 50? string.slice(0,50) + "..." : string;
+    };
 
     return (
         <List>
@@ -37,7 +37,7 @@ const GroupsList = ({groupList}) =>{
                 </li>
             ))}
         </List>
-    )
-}
+    );
+};
 
-export default GroupsList
+export default GroupsList;
