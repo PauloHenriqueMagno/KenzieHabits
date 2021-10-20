@@ -4,7 +4,35 @@ import api from "../../services/api";
 export const HabitsContext = createContext([]);
 
 export const HabitsProvider = ({ children }) => {
-  const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState([
+    {
+      title: "Calistenia a tarde (15 minutos)",
+      category: "Sáude",
+      difficulty: "Muito díficil",
+      frequency: "Diária",
+      achieved: false,
+      how_much_achieved: 30,
+      user: 1,
+    },
+    {
+      title: "Calistenia a tarde (15 minutos)",
+      category: "Sáude",
+      difficulty: "Muito díficil",
+      frequency: "Diária",
+      achieved: false,
+      how_much_achieved: 30,
+      user: 1,
+    },
+    {
+      title: "Calistenia a tarde (15 minutos)",
+      category: "Sáude",
+      difficulty: "Muito díficil",
+      frequency: "Diária",
+      achieved: false,
+      how_much_achieved: 30,
+      user: 1,
+    },
+  ]);
 
   const addHabit = (newHabit) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
