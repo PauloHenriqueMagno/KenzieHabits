@@ -54,8 +54,7 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => setHabits(response.data.results))
-
+      .then((response) => setHabits(response.data))
       .catch((err) => console.log(err));
   };
 
