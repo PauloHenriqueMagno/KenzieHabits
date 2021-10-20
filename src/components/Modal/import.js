@@ -39,7 +39,7 @@ export default function BasicModal({
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     apiAction(
       Data.search === "CreateHabit"
-        ? { ...Data.dataCaptor(data), user: user.id }
+        ? { data: Data.dataCaptor(data), id: user.id }
         : Data.search === "UpdateHabit"
         ? { data: Data.dataCaptor(data), id: habitId }
         : Data.search === "UpdateUser"
@@ -49,11 +49,11 @@ export default function BasicModal({
         : Data.search === "UpdateGroup"
         ? { data: Data.dataCaptor(data), id: groupId }
         : Data.search === "CreateGoal"
-        ? { ...Data.dataCaptor(data), group: groupId }
+        ? { data: Data.dataCaptor(data), id: groupId }
         : Data.search === "UpdateGoal"
         ? { data: Data.dataCaptor(data), id: goalId }
         : Data.search === "CreateActivity"
-        ? { ...Data.dataCaptor(data), group: groupId }
+        ? { data: Data.dataCaptor(data), id: groupId }
         : Data.search === "UpdateActivity"
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
