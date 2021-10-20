@@ -16,5 +16,7 @@ export const Content = styled("div")({
     margin: "0 auto",
     padding: "30px",
     display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
 });

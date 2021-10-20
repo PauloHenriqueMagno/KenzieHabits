@@ -13,9 +13,9 @@ const Routes = () => {
   return (
     <>
       <Switch>
-        {/* <Route path='/login'>
-                    <Login />
-                </Route> */}
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route path="/signup">
           <Signup />
         </Route>
