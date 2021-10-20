@@ -1,17 +1,19 @@
 import Cards from "../../components/Card";
 import Header from "../../components/Header";
 import AddButton from "../../components/AddButton";
-import { Container } from "./style.js";
+import Modal from "../../components/Modal";
+import { Container, Content } from "./style.js";
 
 const Dashboard = () => {
   return (
-    <>
+    <Container>
       <Header></Header>
-      <Container>
+      <Content>
         <Cards></Cards>
-        <AddButton></AddButton>
-      </Container>
-    </>
+      </Content>
+      <AddButton> </AddButton>
+      <Modal modalType="addHabit" />
+    </Container>
   );
 };
 
