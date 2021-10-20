@@ -14,12 +14,14 @@ export const StyledCard = styled(Card)({
   color: " #ffffff",
   fontSize: 14,
   maxHeight: 220,
+  minWidth: 350,
+  margin: 5,
   span: {
     color: " #F36A21",
     fontSize: "14px",
   },
   "@media (min-width: 700px)": {
-    maxHeight: 300,
+    height: 320,
     maxWidth: 350,
     fontSize: 16,
   },

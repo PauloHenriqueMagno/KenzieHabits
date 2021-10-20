@@ -47,13 +47,15 @@ export const HabitsProvider = ({ children }) => {
 
   const getHabits = () => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    console.log(user.access);
     api
-      .get("/habits/personal/", {
+      .get("/habits/", {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => setHabits(response.data))
+      .then((response) => setHabits(response.data.results))
+
       .catch((err) => console.log(err));
   };
 

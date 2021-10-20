@@ -10,11 +10,7 @@ import {
 import { StyledCard, BorderLinearProgress } from "./style.js";
 
 const Cards = ({
-  category,
-  title,
-  difficulty,
-  frequency,
-  how_much_achieved,
+  habits: { category, title, difficulty, frequency, how_much_achieved },
   del,
   edit,
 }) => {
