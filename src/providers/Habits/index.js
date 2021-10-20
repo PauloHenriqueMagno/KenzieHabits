@@ -47,6 +47,7 @@ export const HabitsProvider = ({ children }) => {
 
   const getHabits = () => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    console.log(user.access);
     api
       .get("/habits/personal/", {
         headers: {

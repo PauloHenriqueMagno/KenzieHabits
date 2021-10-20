@@ -9,48 +9,45 @@ import {
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
 
-import { useContext } from "react";
-import { HabitsContext } from "../../providers/Habits";
-
-const Cards = () => {
-  const { habits, deleteHabit, editHabit } = useContext(HabitsContext);
-
+const Cards = ({
+  habits: { category, title, difficulty, frequency, how_much_achieved },
+  del,
+  edit,
+}) => {
   return (
     <>
-      {habits.map((habits, index) => (
-        <div key={index}>
-          <StyledCard>
-            <span> {habits.category}</span>
-            <p>
-              <b> {habits.title}</b>
-            </p>
-            <p> {habits.difficulty}</p>
-            <p> {habits.frequency}</p>
-            <Box sx={{ flexGrow: 1 }}>
-              <br />
-              <BorderLinearProgress
-                variant="determinate"
-                value={habits.how_much_achieved}
-              />
-            </Box>
-            <FormGroup>
-              <FormControlLabel
-                label="Finalizado?"
-                control={<Checkbox defaultChecked />}
-              />
-            </FormGroup>
-            <CardActions>
-              <IconButton aria-label="add" size="small">
-                <Delete onClick={deleteHabit} fontSize="small" />
-              </IconButton>
+      <div>
+        <StyledCard>
+          <span> {category}</span>
+          <p>
+            <b> {title}</b>
+          </p>
+          <p> {difficulty}</p>
+          <p> {frequency}</p>
+          <Box sx={{ flexGrow: 1 }}>
+            <br />
+            <BorderLinearProgress
+              variant="determinate"
+              value={how_much_achieved}
+            />
+          </Box>
+          <FormGroup>
+            <FormControlLabel
+              label="Finalizado?"
+              control={<Checkbox defaultChecked />}
+            />
+          </FormGroup>
+          <CardActions>
+            <IconButton aria-label="add" size="small">
+              <Delete onClick={del} fontSize="small" />
+            </IconButton>
 
-              <IconButton aria-label="delete" size="small">
-                <Edit onClick={editHabit} fontSize="small" />
-              </IconButton>
-            </CardActions>
-          </StyledCard>
-        </div>
-      ))}
+            <IconButton aria-label="delete" size="small">
+              <Edit onClick={edit} fontSize="small" />
+            </IconButton>
+          </CardActions>
+        </StyledCard>
+      </div>
     </>
   );
 };
