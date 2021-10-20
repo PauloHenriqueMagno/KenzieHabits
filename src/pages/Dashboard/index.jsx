@@ -9,8 +9,8 @@ const Dashboard = () => {
       <Header></Header>
       <Container>
         <Cards></Cards>
+        <AddButton></AddButton>
       </Container>
-      <AddButton></AddButton>
     </>
   );
 };
