@@ -1,8 +1,11 @@
-const GroupsList = () =>{
-    return (
-        <>
-        </>
-    )
-}
+import { Container } from "./styles";
+import { UserGroupsContext } from "../../providers/UserGroups";
+import { useContext, useState, useEffect } from "react";
 
-export default GroupsList
+const GroupsList = () => {
+  const { userGroups } = useContext(UserGroupsContext);
+
+  return <Container></Container>;
+};
+
+export default GroupsList;
