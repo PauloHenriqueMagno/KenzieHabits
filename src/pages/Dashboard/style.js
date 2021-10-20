@@ -7,5 +7,7 @@ export const Container = styled("div")({
   "@media (min-width: 700px)": {
     backgroundColor: "#F2F2F2",
     display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
 });
