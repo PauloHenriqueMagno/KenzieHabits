@@ -38,7 +38,7 @@ export default function BasicModal({
   const handleButton = (data) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     apiAction(
-      Data.search === "CreateHabit"
+      Data.search === "CreateHabit" 
         ? { data: Data.dataCaptor(data), id: user.id }
         : Data.search === "UpdateHabit"
         ? { data: Data.dataCaptor(data), id: habitId }
