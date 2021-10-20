@@ -1,20 +1,23 @@
-import { ActivitiesContext } from "./Activities";
-import { UserGroupsContext } from "./UserGroups";
-import { GroupsContext } from "./Groups";
-import { UserContext } from "./User";
-import { HabitsContext } from "./Habits";
+import { ActivitiesProvider } from "./Activities";
+import { UserGroupsProvider } from "./UserGroups";
+import { GroupsProvider } from "./Groups";
+import { UserProvider } from "./User";
+import { HabitsProvider } from "./Habits";
+import { GoalsProvider } from "./Goals";
 
 const Provider = ({ children }) => {
   return (
-    <UserContext>
-      <UserGroupsContext>
-        <ActivitiesContext>
-          <GroupsContext>
-            <HabitsContext>{children}</HabitsContext>
-          </GroupsContext>
-        </ActivitiesContext>
-      </UserGroupsContext>
-    </UserContext>
+    <UserProvider>
+      <UserGroupsProvider>
+        <ActivitiesProvider>
+          <GroupsProvider>
+            <HabitsProvider>
+              <GoalsProvider>{children}</GoalsProvider>
+            </HabitsProvider>
+          </GroupsProvider>
+        </ActivitiesProvider>
+      </UserGroupsProvider>
+    </UserProvider>
   );
 };
 
