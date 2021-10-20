@@ -41,21 +41,21 @@ export default function BasicModal({
       Data.search === "CreateHabit"
         ? { ...Data.dataCaptor(data), user: user.id }
         : Data.search === "UpdateHabit"
-        ? (Data.dataCaptor(data), habitId)
+        ? { data: Data.dataCaptor(data), id: habitId }
         : Data.search === "UpdateUser"
         ? Data.dataCaptor(data)
         : Data.search === "CreateGroup"
         ? Data.dataCaptor(data)
         : Data.search === "UpdateGroup"
-        ? (Data.dataCaptor(data), groupId)
+        ? { data: Data.dataCaptor(data), id: groupId }
         : Data.search === "CreateGoal"
         ? { ...Data.dataCaptor(data), group: groupId }
         : Data.search === "UpdateGoal"
-        ? (Data.dataCaptor(data), goalId)
+        ? { data: Data.dataCaptor(data), id: goalId }
         : Data.search === "CreateActivity"
         ? { ...Data.dataCaptor(data), group: groupId }
         : Data.search === "UpdateActivity"
-        ? (Data.dataCaptor(data), activityId )
+        ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
     if (Data.action === "create") {
