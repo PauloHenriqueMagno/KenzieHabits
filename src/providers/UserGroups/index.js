@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export const UserGroupsContext = createContext([]);
@@ -6,15 +7,19 @@ export const UserGroupsContext = createContext([]);
 export const UserGroupsProvider = ({ children }) => {
   const [userGroups, setUserGroups] = useState([]);
 
-  const editGroup = (editedGroup, groupId) => {
+  const editGroup = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .patch(`/groups/${groupId}`, editedGroup, {
+      .patch(`/groups/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((_) => getUserGroup())
+      .then((response) => {
+        setUserGroups([...userGroups, response.data])
+        toast.info("Grupo criado com sucesso!")
+        console.log(userGroups)
+      })
       .catch((err) => console.log(err));
   };
 

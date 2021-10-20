@@ -44,7 +44,7 @@ const updateHabitData = {
   action: "update",
   triggerBtn: "Editar hábito",
   concludeBtn: "Editar hábito",
-  title: "Edite as informações do seu hábito",
+  title: "Edite aqui as informações do seu hábito",
   schema: {
     title: yup.string().required("Campo obrigatório"),
     category: yup.string().required("Campo obrigatório"),
@@ -169,7 +169,7 @@ const createGoalData = {
   action: "create",
   triggerBtn: "Criar objetivo",
   concludeBtn: "Criar objetivo",
-  title: "Crie aqui seu objetivo",
+  title: "Escreva mais sobre seu novo objetivo",
   schema: {
     title: yup.string().required("Campo obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),
@@ -225,7 +225,7 @@ const createActivityData = {
   action: "create",
   triggerBtn: "Criar Atividade",
   concludeBtn: "Criar Atividade",
-  title: "Crie sua nova atividade",
+  title: "Escreva mais sobre sua nova atividade",
   schema: {
     title: yup.string().required("Campo obrigatório"),
     realization_time: yup.string().required("Campo obrigatório"),
@@ -248,7 +248,7 @@ const updateActivityData = {
   action: "update",
   triggerBtn: "Editar atividade",
   concludeBtn: "Editar atividade",
-  title: "Crie sua nova atividade",
+  title: "Edite aqui sua atividade",
   schema: {
     title: yup.string().required("Campo obrigatório"),
     realization_time: yup.string().required("Campo obrigatório"),
