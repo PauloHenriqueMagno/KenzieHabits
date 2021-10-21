@@ -10,7 +10,7 @@ export const Logo = styled(Link)({
     fontWeight: 500,
     fontSize: "3rem",
     color: "#155B9E",
-    margin: "0 0 40px 20px",
+    margin: "0 0 40px 10px",
 
     span: {
       color: "#F36A21",
@@ -21,38 +21,33 @@ export const Logo = styled(Link)({
 
 export const Container = styled('div')({
   backgroundColor: '#F36A21',
-  padding: '20px 0',
+  padding: '10px 0',
+  maxWidth: '1280px',
+  margin: 'auto',
+
+  '& svg': {
+    color: '#FFF',
+    fontSize: '40px',
+    position: 'absolute',
+    right: '20px',
+    top: '10px',
+  },
 
   '@media (min-width: 700px)': {
     backgroundColor: '#FFF',
+    width: '90%',
+
     '& div': {
       display: 'flex',
       justifyContent: 'space-between',
 
-    }
-  }
-});
-
-export const Avatar = styled('div')({
-  display: 'inline-block',
-  height: '40px',
-  width: '40px',
-  position: 'absolute',
-  top: '12px',
-  right: '10px',
-  borderRadius: '50%',
-
-  '& svg': {
-    fontSize: '40px'
-  },
-
-  '@media (min-width: 700px)': {
-    position: 'relative',
-    height: '50px',
-    width: '50px',
+    },
 
     '& svg': {
-      fontSize: '50px'
+      fontSize: '50px',
+      color: '#555',
+      position: 'relative',
+      margin: '7px 0 0 -19px'
     }
   }
 });

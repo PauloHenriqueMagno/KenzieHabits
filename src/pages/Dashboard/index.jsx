@@ -1,6 +1,6 @@
 import Cards from "../../components/Card";
 import Header from "../../components/Header";
-import { Container } from "./style.js";
+import { Container, Content } from "./style.js";
 import { useContext, useEffect } from "react";
 import { HabitsContext } from "../../providers/Habits";
 import Modal from "../../components/Modal";
@@ -15,9 +15,9 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       <Header></Header>
-      <Container>
+      <Content>
         {habits.map((habits, index) => (
           <Cards
             key={index}
@@ -26,9 +26,9 @@ const Dashboard = () => {
             edit={editHabit}
           />
         ))}
-      </Container>
+      </Content>
       <Modal modalType="CreateHabit" />
-    </>
+    </Container>
   );
 };
 

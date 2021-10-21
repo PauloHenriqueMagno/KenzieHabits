@@ -10,13 +10,11 @@ export const theme = createTheme({
     },
   },
 });
-
-export const ButtonTrigger = {
-  fontSize: "35px",
-  color: "#F36A21",
+export const edit = {
   ":hover": {
     cursor: "pointer",
   },
+  color:"#292F27"
 };
 
 export const style = {
