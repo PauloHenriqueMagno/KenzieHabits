@@ -54,6 +54,7 @@ export const container = {
       padding: "10px 30px",
     },
     ".activityContent": {
+      width: "50%",
       flexDirection: "row",
     },
   },
