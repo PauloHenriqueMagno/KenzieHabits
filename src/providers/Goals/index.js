@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export const GoalsContext = createContext([]);
 
@@ -19,25 +20,39 @@ export const GoalsProvider = ({ children }) => {
 
   const createGoal = (newGoal) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    console.log(newGoal);
     api
       .post("/goals/", newGoal, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => getGoals(response.group))
+      .then((response) => {
+        /* getGoals(response.group) */
+        setGoals([...goals, response.data]);
+        toast.info(`Objetivo criado com sucesso!`);
+        console.log(goals);
+      })
       .catch((err) => console.log(err));
   };
 
-  const editGoal = (editedGoal, goalId) => {
+  const editGoal = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = goals.map((goal) =>
+      goal.id === id ? data : goal
+    );
     api
-      .patch(`/goals/${goalId}/`, editedGoal, {
+      .patch(`/goals/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => getGoals(response.group))
+      .then((response) => {
+        /* getGoals(response.group); */
+        setGoals(newList);
+        toast.info(`Objetivo atualizado com sucesso!`);
+        console.log(goals);
+      })
       .catch((err) => console.log(err));
   };
 

@@ -19,7 +19,11 @@ export const GroupsProvider = ({ children }) => {
           },
         }
       )
-      .then((_) => toast.info(`Inscrição realizada com sucesso!`))
+      .then((response) => {
+        toast.info(`Inscrição realizada com sucesso!`);
+        setGroups([...groups, response.data]);
+        console.log(groups);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -31,7 +35,11 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((_) => toast.info(`Grupo criado com sucesso!`))
+      .then((response) => {
+        const newList = groups.push(response.data);
+        setGroups(newList);
+        toast.info(`Grupo criado com sucesso!`);
+      })
       .catch((err) => console.log(err));
   };
 
