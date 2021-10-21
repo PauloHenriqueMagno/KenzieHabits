@@ -60,17 +60,14 @@ export default function BasicModal({
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
+    handleClose();
     reset();
   };
 
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <IconButton
-          title={Data.triggerBtn}
-          sx={buttonContainer}
-          onClick={handleOpen}
-        >
+        <Box title={Data.triggerBtn} sx={buttonContainer} onClick={handleOpen}>
           {Data.action === "create" ? (
             <AddButton className="button"></AddButton>
           ) : Data.action === "update" && Data.search === "UpdateUserName" ? (
@@ -78,7 +75,7 @@ export default function BasicModal({
           ) : Data.action === "update" ? (
             <Edit className="button" />
           ) : null}
-        </IconButton>
+        </Box>
         <Modal
           open={open}
           onClose={handleClose}
