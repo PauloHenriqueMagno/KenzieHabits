@@ -11,6 +11,15 @@ export const Content = styled("div")({
   minHeight: "90vh",
   borderRadius: "1%",
 
+  ".addGroup": {
+    marginTop: "30px",
+    marginBottom: "15px",
+    paddingRight: "20px",
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+
   "@media (min-width: 700px)": {
     width: "90%",
     margin: "0 auto",
