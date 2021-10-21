@@ -72,7 +72,6 @@ const Cards = ({
                 <Checkbox
                   checked={achievedGoal}
                   onChange={handleAchieved}
-                  disabled={achieved}
                 />
               }
               label="Finalizado?"

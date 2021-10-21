@@ -14,6 +14,7 @@ export const StyledCardGroup = styled(Card)({
     borderColor: "#000000",
     color: " #ffffff",
     minWidth: "100%",
+    cursor: "pointer",
     
     "@media (min-width: 700px)": {
         display: "grid",

@@ -33,7 +33,6 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         setActivities([...activities, response.data]);
-        getUserGroups();
         getActivities(response.data.group);
         toast.info(`Atividade criada com sucesso!`);
       })

@@ -21,7 +21,7 @@ export const Logo = styled(Link)({
 
 export const Container = styled('div')({
   backgroundColor: '#F36A21',
-  padding: '20px 0',
+  padding: '20px 10px',
   maxWidth: '1280px',
   margin: 'auto',
 
@@ -32,42 +32,66 @@ export const Container = styled('div')({
   }
 });
 
-export const Button = styled(Link)({
+export const Button = styled(Link)(({select})=>({
   color: '#FFF',
   textDecoration: 'none',
   padding: '5px',
   fontSize: '0.9rem',
+  filter: `brightness(${select ? `50%`: `100%`})`,
   
   '@media (min-width: 700px)': {
-    backgroundColor: '#5D6A5A',
+    backgroundColor: select ? `#1F1F1E`: `#5D6A5A`,
     padding: '10px',
     margin: '10px',
-    borderRadius: '10px 10px 0 0'
+    borderRadius: '10px 10px 0 0',
+    filter: `brightness(100%)`,
   }
-});
+}));
 
 export const IconUser = styled("div")({
   display: 'flex',
   justifyContent: 'space-between',
+});
 
+export const UserName = styled("div")({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexDirection: "row-reverse",
+  width: "max-content",
+  margin: "0 0 15px 0",
+  
+  p: {
+    color: "#FFF",
+  },
+
+  div:{
+    width: "90px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  
   svg: {
-    width: "50px",
+    width: "100%",
     color: '#FFF',
     fontSize: '40px',
-    position: 'absolute',
-    right: '20px',
-    top: '10px',
   },
-  div:{
-    width: "50px",
-  },
+  
+  "@media (min-width: 700px)": {
+    flexDirection: "row",
+    height: "80px",
+    margin: "0 0 0 0",
 
-  '@media (min-width: 700px)': {
+    p: {
+      color: "#1F1F1E",
+    },
+
     svg: {
-      fontSize: '50px',
+      fontSize: '56px',
       color: '#555',
       position: 'relative',
       margin: '7px 0 0 -19px'
     },
-  },
+  }
 });

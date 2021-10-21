@@ -48,7 +48,9 @@ const UserGroups = () => {
                         <GroupsList groupList={groups} />
                     }
                 </GroupBox>
-                <Modal modalType="CreateGroup" />
+                <OpenModalCreateGroup>
+                    <Modal modalType="CreateGroup" />
+                </OpenModalCreateGroup>
             </Container>
         </>
     );
