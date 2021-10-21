@@ -39,9 +39,7 @@ export const GoalsProvider = ({ children }) => {
   const editGoal = ({ data, id }) => {
     console.log(data, id);
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    const newList = goals.map((goal) =>
-      goal.id === id ? data : goal
-    );
+    const newList = goals.map((goal) => (goal.id === id ? data : goal));
     api
       .patch(`/goals/${id}/`, data, {
         headers: {
