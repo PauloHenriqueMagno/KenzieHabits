@@ -12,7 +12,6 @@ const ActivitiesList = ({ activities }) => {
   const deleteActivity = (activityId) => {
     removeActivity(activityId);
   };
-  console.log(activities);
   return (
     <ThemeProvider theme={theme}>
       <Box sx={container}>

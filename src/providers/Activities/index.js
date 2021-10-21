@@ -18,7 +18,7 @@ export const ActivitiesProvider = ({ children }) => {
     } else {
       api
         .get(`/activities/?group=${groupId}`)
-        .then((response) => setActivities(response.data))
+        .then((response) => setActivities(response.data.results))
         .catch((err) => console.log(err));
     }
   };
@@ -33,7 +33,6 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         setActivities([...activities, response.data]);
-        getUserGroups();
         getActivities(response.data.group);
         toast.info(`Atividade criada com sucesso!`);
       })
