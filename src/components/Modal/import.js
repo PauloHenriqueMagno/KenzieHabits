@@ -37,7 +37,7 @@ export default function BasicModal({
   } = useForm({
     resolver: yupResolver(modalSchema),
   });
-  const handleButton = (data) => {
+  const handleButton = (data, e) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     apiAction(
       Data.search === "CreateHabit"
@@ -60,8 +60,11 @@ export default function BasicModal({
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
+
     handleClose();
-    reset();
+    if (Data.action === "create") {
+      return reset();
+    }
   };
 
   return (

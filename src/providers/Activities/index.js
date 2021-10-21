@@ -41,9 +41,9 @@ export const ActivitiesProvider = ({ children }) => {
 
   const editActivity = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    const newList = activities.map((activity) =>
-      activity.id === id ? data : activity
-    );
+    // const newList = activities.map((activity) =>
+    //   activity.id === id ? data : activity
+    // );
     api
       .patch(`/activities/${id}/`, data, {
         headers: {
@@ -51,7 +51,8 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        setActivities(newList);
+        getActivities(response.data.group)
+        console.log(response)
         toast.info(`Atividade atualizada com sucesso!`);
       })
       .catch((err) => console.log(err));
