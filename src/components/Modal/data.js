@@ -66,14 +66,14 @@ const updateHabitData = {
     },
   ],
   dataCaptor: (data) => {
-    const { title, category, difficulty, frequency, how_much_achieved, achieved } = data;
+    const { title, category, difficulty, frequency, how_much_achieved } = data;
     const newData = {
       title: title,
       category: category,
       difficulty: difficulty,
       frequency: frequency,
       how_much_achieved: how_much_achieved,
-      achieved: how_much_achieved === 100? true: achieved,
+      achieved: how_much_achieved === 100,
     };
     return newData;
   },

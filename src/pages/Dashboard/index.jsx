@@ -10,14 +10,12 @@ const Dashboard = () => {
   const { habits, getHabits, editHabit, deleteHabit } =
     useContext(HabitsContext);
 
-  // console.log(habits);
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
 
-    if(!!user){
+    if (!!user) {
       getHabits();
-    };
+    }
   }, []);
 
   return (
@@ -45,4 +43,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
