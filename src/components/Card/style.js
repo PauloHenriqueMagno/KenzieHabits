@@ -13,16 +13,26 @@ export const StyledCard = styled(Card)({
   borderColor: "#000000",
   color: " #ffffff",
   fontSize: 14,
-  maxHeight: 240,
+  height: 220,
+  maxHeight: 330,
   minWidth: 350,
   margin: 5,
   span: {
     color: " #F36A21",
     fontSize: "14px",
   },
+  ".buttons": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   "@media (min-width: 700px)": {
+    height: 240,
     maxWidth: 350,
     fontSize: 16,
+    ".buttons": {
+      display: "initial",
+    },
   },
 });
 

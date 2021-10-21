@@ -66,26 +66,28 @@ const Cards = ({
               value={achieved ? 100 : how_much_achieved}
             />
           </Box>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={achievedGoal}
-                  onChange={handleAchieved}
-                  disabled={achieved}
-                />
-              }
-              label="Finalizado?"
-            />
-          </FormGroup>
-          <CardActions>
-            <IconButton aria-label="delete" size="small">
-              <Modal modalType="UpdateHabit" habitId={id} />
-            </IconButton>
-            <IconButton onClick={deleteHabit} aria-label="delete">
-              <Delete />
-            </IconButton>
-          </CardActions>
+          <div className="buttons">
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={achievedGoal}
+                    onChange={handleAchieved}
+                    disabled={achieved}
+                  />
+                }
+                label="Finalizado?"
+              />
+            </FormGroup>
+            <CardActions>
+              <IconButton aria-label="delete" size="small">
+                <Modal modalType="UpdateHabit" habitId={id} />
+              </IconButton>
+              <IconButton onClick={deleteHabit} aria-label="delete">
+                <Delete />
+              </IconButton>
+            </CardActions>
+          </div>
         </StyledCard>
       </div>
     </>
