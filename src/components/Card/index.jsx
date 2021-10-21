@@ -41,7 +41,6 @@ const Cards = ({
         frequency,
         id,
       },
-      id: id,
     });
     getHabits();
   };

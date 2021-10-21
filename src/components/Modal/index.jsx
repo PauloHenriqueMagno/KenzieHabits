@@ -15,6 +15,7 @@ const Modal = ({ modalType, habitId, groupId, goalId, activityId }) => {
   const { editGroup } = useContext(UserGroupsContext);
   const { createGoal, editGoal } = useContext(GoalsContext);
   const { createActivity, editActivity } = useContext(ActivitiesContext);
+  
 
   console.log();
   return modalType === allData[0].search ? (
