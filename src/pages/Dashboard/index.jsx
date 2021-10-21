@@ -36,8 +36,10 @@ const Dashboard = () => {
             );
           })
         )}
+        <div className="addGroup">
+          <Modal modalType="CreateHabit" />
+        </div>
       </Content>
-      <Modal modalType="CreateHabit" />
     </Container>
   );
 };

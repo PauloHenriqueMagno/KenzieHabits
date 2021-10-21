@@ -65,7 +65,7 @@ export const StyledBox = styled(Box)({
     display: "flex",
     alignItems: "center",
   },
-  "@media (min-width: 700px)": {
+  "@media (min-width: 958px)": {
     justifyContent: "space-between",
 
     "& .groupsListTitles": {
@@ -80,7 +80,7 @@ export const StyledTablePagination = styled(TablePagination)({
   color: "#FFF",
   marginLeft: "auto",
 
-  "@media (min-width: 700px)": {
+  "@media (min-width: 958px)": {
     flex: 1,
   },
 });

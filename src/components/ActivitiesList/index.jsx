@@ -12,11 +12,10 @@ const ActivitiesList = ({ activities }) => {
   const deleteActivity = (activityId) => {
     removeActivity(activityId);
   };
-  console.log(activities);
   return (
     <ThemeProvider theme={theme}>
       <Box sx={container}>
-        {activities.map((activity) => {
+        {activities.sort((a, b) => a.id - b.id).map((activity) => {
           return (
             <div className="activityContainer" key={activity.id}>
               <div className="activityContent">

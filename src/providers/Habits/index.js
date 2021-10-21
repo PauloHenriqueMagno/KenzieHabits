@@ -25,8 +25,6 @@ export const HabitsProvider = ({ children }) => {
   const editHabit = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
 
-    const newList = habits.map((habit) => (habit.id === id ? data : habit));
-
     console.log(data);
 
     api
