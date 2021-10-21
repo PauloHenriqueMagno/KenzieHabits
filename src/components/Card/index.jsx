@@ -65,6 +65,7 @@ const Cards = ({
           <CardActions>
             <IconButton aria-label="add" size="small">
               <Modal modalType="UpdateHabit" />
+              {/* ADICIONAR O ID PARA EDITAR O HÁBITO */}
             </IconButton>
 
             <IconButton aria-label="delete" size="small">
