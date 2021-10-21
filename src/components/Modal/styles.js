@@ -10,11 +10,16 @@ export const theme = createTheme({
     },
   },
 });
-export const edit = {
-  ":hover": {
-    cursor: "pointer",
+
+export const buttonContainer = {
+  width:"30px",
+  "svg:first-of-type": {
+    "pointer-events": "",
+    width:"100%",
+    ":hover": {
+      cursor: "pointer",
+    },
   },
-  color:"#292F27"
 };
 
 export const style = {

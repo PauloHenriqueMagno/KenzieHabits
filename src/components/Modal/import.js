@@ -3,7 +3,7 @@ import { Box } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { Typography } from "@material-ui/core";
 import { Modal } from "@material-ui/core";
-import { style, edit } from "./styles";
+import { style, buttonContainer } from "./styles";
 import { theme } from "./styles";
 import { ThemeProvider } from "@material-ui/core";
 import Inputs from "../Inputs/index";
@@ -59,24 +59,25 @@ export default function BasicModal({
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
+    reset();
   };
 
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <div
-          onClick={handleOpen}
+        <Box
           title={Data.triggerBtn}
-          style={{ width: "35px" }}
+          sx={buttonContainer}
+          onClick={handleOpen}
         >
           {Data.action === "create" ? (
-            <AddButton />
+            <AddButton className="button"></AddButton>
           ) : Data.action === "update" && Data.search === "UpdateUserName" ? (
-            <AccountCircleIcon />
+            <AccountCircleIcon className="button" />
           ) : Data.action === "update" ? (
-            <Edit sx={edit} />
+            <Edit className="button" />
           ) : null}
-        </div>
+        </Box>
         <Modal
           open={open}
           onClose={handleClose}

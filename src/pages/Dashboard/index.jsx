@@ -10,7 +10,7 @@ const Dashboard = () => {
   const { habits, getHabits, editHabit, deleteHabit } =
     useContext(HabitsContext);
 
-  console.log(habits);
+  // console.log(habits);
 
   useEffect(() => {
     getHabits();
@@ -41,3 +41,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
