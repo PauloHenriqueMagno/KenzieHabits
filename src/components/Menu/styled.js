@@ -8,7 +8,7 @@ export const HeaderMenu = styled("header")({
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        maxWidth: "1300px",
+        maxWidth: "1280px",
         padding: "5px 15px",
         margin: "auto",
         
@@ -26,6 +26,9 @@ export const HeaderMenu = styled("header")({
         },
 
         nav: {
+            display: "flex",
+            gap: "15px",
+
             button: {
                 border: "none",
                 backgroundColor: "transparent",
@@ -41,7 +44,7 @@ export const HeaderMenu = styled("header")({
         },
     },
 
-    "@media (min-width: 769px)" : {
+    "@media (min-width: 700px)" : {
 
         ".container": {
             flexDirection: "row-reverse",
