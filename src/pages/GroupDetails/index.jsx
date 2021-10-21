@@ -60,16 +60,18 @@ const GroupDetails = () => {
             {goals.length === 0 ? (
               <Typography>Nenhum objetivo cadastrado</Typography>
             ) : (
-              goals.map((goal) => {
-                return (
-                  <GoalsCard
-                    key={goal.id}
-                    goal={goal}
-                    del={deleteGoal}
-                    edit={editGoal}
-                  />
-                );
-              })
+              goals
+                .sort((a, b) => a.id - b.id)
+                .map((goal) => {
+                  return (
+                    <GoalsCard
+                      key={goal.id}
+                      goal={goal}
+                      del={deleteGoal}
+                      edit={editGoal}
+                    />
+                  );
+                })
             )}
           </div>
         </StyledPaper>
