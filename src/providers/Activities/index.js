@@ -52,7 +52,6 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         getActivities(response.data.group)
-        console.log(response)
         toast.info(`Atividade atualizada com sucesso!`);
       })
       .catch((err) => console.log(err));

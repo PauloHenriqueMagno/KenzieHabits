@@ -12,10 +12,9 @@ export const theme = createTheme({
 });
 
 export const buttonContainer = {
-  width:"30px",
   "svg:first-of-type": {
     "pointer-events": "",
-    width:"100%",
+
     ":hover": {
       cursor: "pointer",
     },
