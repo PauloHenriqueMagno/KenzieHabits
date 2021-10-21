@@ -146,8 +146,10 @@ const Groups = () => {
             );
           })}
         </StyledPaper>
+        <div className="addGroup">
+          <Modal modalType="CreateGroup" />
+        </div>
       </Content>
-      <Modal modalType="CreateGroup" />
     </Container>
   );
 };
