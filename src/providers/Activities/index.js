@@ -1,14 +1,11 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { UserGroupsContext } from "../UserGroups";
-import { useContext } from "react";
 
 export const ActivitiesContext = createContext([]);
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
-  const { getUserGroups } = useContext(UserGroupsContext);
 
   const getActivities = (groupId, page = undefined) => {
     if (!!page) {
