@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
 import GoalsCard from "../../components/GoalsCard";
+import ActivitiesList from "../../components/ActivitiesList";
 import { Delete, Edit } from "@material-ui/icons";
 import { UserGroupsContext } from "../../providers/UserGroups";
 import { Container, Content, StyledPaper } from "./styles";
@@ -39,7 +40,7 @@ const GroupDetails = () => {
             <Modal modalType="CreateActivity" />
           </div>
           <div className="actionsContent">
-            {activities.length === 0 ? (
+            {/* {activities.length === 0 ? (
               <Typography>Nenhuma atividade cadastrada</Typography>
             ) : (
               activities.map((activity) => {
@@ -65,7 +66,8 @@ const GroupDetails = () => {
                   </List>
                 );
               })
-            )}
+            )} */}
+            <ActivitiesList group={group} />
           </div>
         </StyledPaper>
         <StyledPaper>
