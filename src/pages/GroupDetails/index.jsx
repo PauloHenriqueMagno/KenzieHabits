@@ -40,7 +40,11 @@ const GroupDetails = () => {
             <Modal modalType="CreateActivity" />
           </div>
           <div className="actionsContent">
-            <ActivitiesList group={group} />
+            {activities.length === 0 ? (
+              <Typography>Nenhuma atividade cadastrada</Typography>
+            ) : (
+              <ActivitiesList group={group} />
+            )}
           </div>
         </StyledPaper>
         <StyledPaper>
@@ -52,7 +56,7 @@ const GroupDetails = () => {
           </div>
           <div className="goalsContent">
             {goals.length === 0 ? (
-              <Typography>Nenhuma atividade cadastrada</Typography>
+              <Typography>Nenhum objetivo cadastrado</Typography>
             ) : (
               goals.map((goal) => {
                 return (
