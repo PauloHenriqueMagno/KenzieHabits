@@ -28,6 +28,7 @@ export const HabitsProvider = ({ children }) => {
     const newList = habits.map((habit) =>
       habit.id === id ? data : habit
     );
+    console.log(habits)
 
     api
       .patch(`/habits/${id}/`, data, {

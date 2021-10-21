@@ -14,6 +14,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import AddButton from "../AddButton";
 import { Edit } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { IconButton } from "@material-ui/core";
 
 export default function BasicModal({
   Data,
@@ -65,7 +66,7 @@ export default function BasicModal({
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Box
+        <IconButton
           title={Data.triggerBtn}
           sx={buttonContainer}
           onClick={handleOpen}
@@ -77,7 +78,7 @@ export default function BasicModal({
           ) : Data.action === "update" ? (
             <Edit className="button" />
           ) : null}
-        </Box>
+        </IconButton>
         <Modal
           open={open}
           onClose={handleClose}
