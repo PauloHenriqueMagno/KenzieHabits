@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 
@@ -37,6 +38,7 @@ export const GoalsProvider = ({ children }) => {
   };
 
   const editGoal = ({ data, id }) => {
+    console.log(data, id);
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     const newList = goals.map((goal) =>
       goal.id === id ? data : goal
@@ -54,12 +56,22 @@ export const GoalsProvider = ({ children }) => {
         console.log(goals);
       })
       .catch((err) => console.log(err));
+    // .then((response) => getGoals(response.group))
   };
 
-  const deleteGoal = (goalId, groupId) => {
+  const deleteGoal = (goalId) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(`/goals/${goalId}/`)
-      .then((_) => setGoals(groupId))
+      .delete(
+        `/goals/${goalId}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((_) => toast.success("Objetivo excluido!"))
       .catch((err) => console.log(err));
   };
 
