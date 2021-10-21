@@ -16,6 +16,7 @@ export const edit = {
   },
   color:"#292F27"
 };
+
 export const style = {
   position: "absolute",
   top: "50%",

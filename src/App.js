@@ -1,6 +1,6 @@
-import './App.css';
-import Routes from './routes';
-import Footer from './components/Footer'
+import "./App.css";
+import Routes from "./routes";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Routes />
       <Footer />
     </>
-  )
+  );
 }
 
 export default App;
