@@ -78,6 +78,7 @@ export const StyledTablePagination = styled(TablePagination)({
 
 export const AccordionSummaryText = styled(Typography)({
   width: "33%",
+  wordWrap: "break-word",
   flexShrink: 0,
   fontSize: "0.8em",
   fontWeight: "bold",
