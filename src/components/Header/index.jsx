@@ -1,5 +1,4 @@
-import {Button, Container, Logo, Avatar} from './style.js';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {Button, Container, Logo} from './style.js';
 import Modal from '../Modal';
 
 const Header = () => {

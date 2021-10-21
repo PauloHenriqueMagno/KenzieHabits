@@ -21,7 +21,7 @@ export const Logo = styled(Link)({
 
 export const Container = styled('div')({
   backgroundColor: '#F36A21',
-  padding: '10px 0',
+  padding: '20px 0',
   maxWidth: '1280px',
   margin: 'auto',
 
@@ -36,6 +36,7 @@ export const Container = styled('div')({
   '@media (min-width: 700px)': {
     backgroundColor: '#FFF',
     width: '90%',
+    padding: '10px 0',
 
     '& div': {
       display: 'flex',
