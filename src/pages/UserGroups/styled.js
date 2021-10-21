@@ -21,7 +21,20 @@ export const OpenModalCreateGroup = styled("div")({
             width: "min-content",
         }
     }
-})
+});
+
+export const GroupBox = styled("section")({
+    padding: "20px 0 10px 0",
+    
+    "@media (min-width: 700px)": {
+        border: "1px solid #1F1F1E",
+        borderWidth: "1px 0 0 0",
+
+        "&:first-child": {
+            borderWidth: "0 0 0 0",
+        },
+    },
+});
 
 export const Container = styled("div")({
     display: "relative",
@@ -32,7 +45,12 @@ export const Container = styled("div")({
     minHeight: "60vh",
     margin: "0 auto 20px",
     borderRadius: "8px",
+    gap: "15px",
     
+    h3: {
+        padding: "0 0 15px 0",
+    },
+
     "@media (min-width: 700px)": {
         backgroundColor: "#F2F2F2",
         display: "flex",

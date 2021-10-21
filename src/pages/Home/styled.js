@@ -18,6 +18,7 @@ export const HomeSection = styled("main")({
 
     ".container": {
         width: "100%",
+        maxWidth: "1280px",
         minHeight: "80vh",
         margin: "auto",
         display: "flex",
@@ -49,10 +50,10 @@ export const HomeSection = styled("main")({
             border: "none",
             fontSize: "1.4rem",
             color: "rgb(255,255,255)",
-        }
+        },
     },
         
-    "@media (min-width: 769px)": {
+    "@media (min-width: 700px)": {
         img: {
             transform: "translateX(0%)",
             opacity: "1",
@@ -60,6 +61,7 @@ export const HomeSection = styled("main")({
         },
         ".content": {
             margin: "10% 20% 0 auto",
+
             p: {
                 fontSize: "2.4rem",
                 maxWidth: "450px",

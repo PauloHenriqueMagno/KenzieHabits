@@ -1,22 +1,27 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { UserGroupsContext } from "../UserGroups";
+import { useContext } from "react";
 
 export const ActivitiesContext = createContext([]);
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
+  const { getUserGroups } = useContext(UserGroupsContext);
 
   const getActivities = (groupId, page = undefined) => {
     if (!!page) {
       api
         .get(page)
-        .then((response) => setActivities(response))
+        .then((response) => {
+          setActivities(response.data);
+        })
         .catch((err) => console.log(err));
     } else {
       api
         .get(`/activities/?group=${groupId}`)
-        .then((response) => setActivities(response))
+        .then((response) => setActivities(response.data))
         .catch((err) => console.log(err));
     }
   };
@@ -30,13 +35,12 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        /* getActivities(response.group); */
-        setActivities([...activities, response.data]);
-        toast.info(`Atividade criada com sucesso!`);
+        console.log(getUserGroups());
+        getActivities(response.data.group);
         console.log(activities);
+        toast.info(`Atividade criada com sucesso!`);
       })
       .catch((err) => console.log(err));
-    console.log(newActivity);
   };
 
   const editActivity = ({ data, id }) => {
@@ -51,7 +55,6 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        /* getActivities(response.group); */
         setActivities(newList);
         toast.info(`Atividade atualizada com sucesso!`);
         console.log(activities);
@@ -59,10 +62,19 @@ export const ActivitiesProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const removeActivity = (activityId, groupId) => {
+  const removeActivity = (activityId) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(`/activities/${activityId}/`)
-      .then((_) => getActivities(groupId))
+      .delete(
+        `/activities/${activityId}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((_) => toast.success("Atividade excluida!"))
       .catch((err) => console.log(err));
   };
 

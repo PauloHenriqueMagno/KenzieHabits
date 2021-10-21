@@ -1,10 +1,14 @@
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
+import { UserGroupsContext } from "../UserGroups";
+import { useContext } from "react";
 
 export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
+  const { getUserGroup } = useContext(UserGroupsContext);
+
   const [groups, setGroups] = useState([]);
 
   const subscribeOnGroup = (groupToSubscribe) => {
@@ -35,9 +39,8 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => {
-        const newList = groups.push(response.data);
-        setGroups(newList);
+      .then(() => {
+        getUserGroup();
         toast.info(`Grupo criado com sucesso!`);
       })
       .catch((err) => console.log(err));

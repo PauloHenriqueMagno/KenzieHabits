@@ -1,4 +1,4 @@
-import { Delete } from "@material-ui/icons";
+import { Delete, Edit } from "@material-ui/icons";
 import {
   IconButton,
   FormGroup,
@@ -8,45 +8,35 @@ import {
   Box,
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
-import { useState, useContext } from "react";
-import Modal from "../../components/Modal";
-import { HabitsContext } from "../../providers/Habits";
+import Modal from "../Modal";
+import { useContext, useState } from "react";
+import { UserGroupsContext } from "../../providers/UserGroups/index.js";
 
-const Cards = ({
-  habits: {
-    category,
-    title,
-    difficulty,
-    frequency,
-    how_much_achieved,
-    achieved,
-    id,
-  },
+const GoalsCard = ({
+  goal: { title, difficulty, how_much_achieved, achieved, id },
   del,
   edit,
 }) => {
   const [achievedGoal, setAchievedGoal] = useState(achieved);
-  const { getHabits } = useContext(HabitsContext);
+  const { getUserGroup } = useContext(UserGroupsContext);
 
   const handleAchieved = (event) => {
     setAchievedGoal(!achievedGoal);
     edit({ data: { achieved: !achievedGoal }, id: id });
-    getHabits();
+    getUserGroup();
   };
 
-  const deleteHabit = () => {
+  const deleteGoal = () => {
     del(id);
   };
   return (
     <>
       <div>
         <StyledCard>
-          <span> {category}</span>
           <p>
             <b> {title}</b>
           </p>
           <p> {difficulty}</p>
-          <p> {frequency}</p>
           <Box sx={{ flexGrow: 1 }}>
             <br />
             <BorderLinearProgress
@@ -63,11 +53,12 @@ const Cards = ({
             />
           </FormGroup>
           <CardActions>
-            <IconButton aria-label="delete" size="small">
-              <Modal modalType="UpdateHabit" habitId={id} />
+            <IconButton aria-label="add" size="small">
+              <Modal modalType="UpdateGoal" />
             </IconButton>
-            <IconButton onClick={deleteHabit} aria-label="delete">
-              <Delete />
+
+            <IconButton aria-label="delete" size="small">
+              <Delete onClick={deleteGoal} fontSize="small" />
             </IconButton>
           </CardActions>
         </StyledCard>
@@ -76,4 +67,4 @@ const Cards = ({
   );
 };
 
-export default Cards;
+export default GoalsCard;
