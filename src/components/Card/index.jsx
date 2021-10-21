@@ -25,7 +25,7 @@ const Cards = ({
   del,
   edit,
 }) => {
-  const [achievedGoal, setAchievedGoal] = useState(achieved);
+  const [achievedGoal, setAchievedGoal] = useState(how_much_achieved === 100? true: achieved);
   const { getHabits } = useContext(HabitsContext);
 
   const handleAchieved = (event) => {

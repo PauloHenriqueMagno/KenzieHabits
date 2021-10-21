@@ -11,7 +11,7 @@ const Header = () => {
     <Container>
       <IconUser>
         <Logo to='/dashboard' >K<span>HABIT</span>Z</Logo>
-        <Modal modalType="UpdateUserName" />
+        <Modal id="UserIcon" modalType="UpdateUserName" />
       </IconUser>
       <Button to='/dashboard' >Meus Habitos</Button>
       <Button to='/dashboard/groups' >Meus Grupos</Button>

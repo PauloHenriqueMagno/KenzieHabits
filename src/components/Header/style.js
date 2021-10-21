@@ -51,11 +51,15 @@ export const IconUser = styled("div")({
   justifyContent: 'space-between',
 
   svg: {
+    width: "50px",
     color: '#FFF',
     fontSize: '40px',
     position: 'absolute',
     right: '20px',
     top: '10px',
+  },
+  div:{
+    width: "50px",
   },
 
   '@media (min-width: 700px)': {
