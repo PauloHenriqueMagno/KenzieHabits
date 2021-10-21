@@ -40,33 +40,6 @@ const GroupDetails = () => {
             <Modal modalType="CreateActivity" />
           </div>
           <div className="actionsContent">
-            {/* {activities.length === 0 ? (
-              <Typography>Nenhuma atividade cadastrada</Typography>
-            ) : (
-              activities.map((activity) => {
-                return (
-                  <List>
-                    <ListItem
-                      secondaryAction={
-                        <>
-                          <IconButton edge="end">
-                            <Edit />
-                          </IconButton>
-                          <IconButton edge="end">
-                            <Delete />
-                          </IconButton>
-                        </>
-                      }
-                    >
-                      <ListItemText
-                        primary={activity.title}
-                        secondary={activity.realization_time}
-                      />
-                    </ListItem>
-                  </List>
-                );
-              })
-            )} */}
             <ActivitiesList group={group} />
           </div>
         </StyledPaper>
