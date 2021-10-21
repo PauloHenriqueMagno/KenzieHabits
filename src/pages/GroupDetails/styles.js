@@ -29,6 +29,13 @@ export const StyledPaper = styled(Paper)({
     alignItems: "center",
   },
 
+  "& .goalsContent": {
+    width: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+  },
+
   "@media (min-width: 700px)": {
     marginTop: "none",
   },

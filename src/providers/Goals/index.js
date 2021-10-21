@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export const GoalsContext = createContext([]);
@@ -29,22 +30,33 @@ export const GoalsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const editGoal = (editedGoal, goalId) => {
+  const editGoal = ({ data, id }) => {
+    console.log(data, id);
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .patch(`/goals/${goalId}/`, editedGoal, {
+      .patch(`/goals/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => getGoals(response.group))
+      .then((_) => toast.success("Objetivo atualizado"))
       .catch((err) => console.log(err));
+    // .then((response) => getGoals(response.group))
   };
 
-  const deleteGoal = (goalId, groupId) => {
+  const deleteGoal = (goalId) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(`/goals/${goalId}/`)
-      .then((_) => setGoals(groupId))
+      .delete(
+        `/goals/${goalId}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((_) => toast.success("Objetivo excluido!"))
       .catch((err) => console.log(err));
   };
 

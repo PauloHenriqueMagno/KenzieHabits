@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
+import GoalsCard from "../../components/GoalsCard";
 import { Delete, Edit } from "@material-ui/icons";
 import { UserGroupsContext } from "../../providers/UserGroups";
 import { Container, Content, StyledPaper } from "./styles";
@@ -13,16 +14,18 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import { GoalsContext } from "../../providers/Goals";
 
 const GroupDetails = () => {
   const { groupId } = useParams();
   const { userGroups } = useContext(UserGroupsContext);
+  const { deleteGoal, editGoal } = useContext(GoalsContext);
 
   const group = userGroups.filter(
     (groupOnList) => groupOnList.id == groupId
   )[0];
-  console.log(group);
-  const { activities } = group;
+
+  const { activities, goals } = group;
 
   return (
     <Container>
@@ -60,6 +63,30 @@ const GroupDetails = () => {
                       />
                     </ListItem>
                   </List>
+                );
+              })
+            )}
+          </div>
+        </StyledPaper>
+        <StyledPaper>
+          <div className="actionsHeader">
+            <Typography sx={{ marginRight: 5 }}>
+              Objetivos do grupo - {group.name}
+            </Typography>
+            <Modal modalType="CreateGoal" />
+          </div>
+          <div className="goalsContent">
+            {goals.length === 0 ? (
+              <Typography>Nenhuma atividade cadastrada</Typography>
+            ) : (
+              goals.map((goal) => {
+                return (
+                  <GoalsCard
+                    key={goal.id}
+                    goal={goal}
+                    del={deleteGoal}
+                    edit={editGoal}
+                  />
                 );
               })
             )}
