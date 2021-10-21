@@ -14,6 +14,7 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import AddButton from "../AddButton";
 import { Edit } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { IconButton } from "@material-ui/core";
 
 export default function BasicModal({
   Data,
@@ -59,17 +60,14 @@ export default function BasicModal({
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
+    handleClose();
     reset();
   };
 
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Box
-          title={Data.triggerBtn}
-          sx={buttonContainer}
-          onClick={handleOpen}
-        >
+        <Box title={Data.triggerBtn} sx={buttonContainer} onClick={handleOpen}>
           {Data.action === "create" ? (
             <AddButton className="button"></AddButton>
           ) : Data.action === "update" && Data.search === "UpdateUserName" ? (
