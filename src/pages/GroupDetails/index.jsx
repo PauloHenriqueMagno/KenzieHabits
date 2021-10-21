@@ -28,6 +28,7 @@ const GroupDetails = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { activities, goals } = group;
   return (
     <Container>
       <Header />
@@ -47,6 +48,8 @@ const GroupDetails = () => {
             )}
           </div>
         </StyledPaper>
+
+        
         <StyledPaper>
           <div className="actionsHeader">
             <Typography sx={{ marginRight: 5 }}>

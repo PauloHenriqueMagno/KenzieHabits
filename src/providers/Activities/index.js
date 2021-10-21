@@ -1,22 +1,27 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { UserGroupsContext } from "../UserGroups";
+import { useContext } from "react";
 
 export const ActivitiesContext = createContext([]);
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
+  const { getUserGroups } = useContext(UserGroupsContext);
 
   const getActivities = (groupId, page = undefined) => {
     if (!!page) {
       api
         .get(page)
-        .then((response) => setActivities(response))
+        .then((response) => {
+          setActivities(response.data);
+        })
         .catch((err) => console.log(err));
     } else {
       api
         .get(`/activities/?group=${groupId}`)
-        .then((response) => setActivities(response.data.results))
+        .then((response) => setActivities(response.data))
         .catch((err) => console.log(err));
     }
   };
@@ -31,6 +36,8 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         setActivities([...activities, response.data]);
+        getUserGroups();
+        getActivities(response.data.group);
         toast.info(`Atividade criada com sucesso!`);
       })
       .catch((err) => console.log(err));

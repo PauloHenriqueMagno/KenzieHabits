@@ -20,7 +20,6 @@ export const UserGroupsProvider = ({ children }) => {
       })
       .then(() => {
         setUserGroups(newList)
-        getUserGroup()
         toast.info("Grupo criado com sucesso!")
         console.log(userGroups)
       })
