@@ -24,6 +24,7 @@ const Dashboard = () => {
             habits={habits}
             del={deleteHabit}
             edit={editHabit}
+            //<Modal modalType="UpdateHabit" habitId={habits.id} />;
           />
         ))}
       </Content>
