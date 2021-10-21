@@ -1,25 +1,29 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext([]);
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const addUser = (user) => {
-    setUser(user);
-    localStorage.setItem("khabitz/user", JSON.stringify(user));
+  const addUser = (userInfo) => {
+    setUser(userInfo);
+    localStorage.setItem("khabitz/user", JSON.stringify(userInfo));
   };
 
   const editUser = (editedUser) => {
     setUser(editedUser);
+    const userInfo = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .patch(`/users/${user.id}/`, editedUser, {
+      .patch(`/users/${userInfo.id}/`, editedUser, {
         headers: {
-          Authorization: `Bearer ${user.access}`,
+          Authorization: `Bearer ${userInfo.access}`,
         },
       })
-      .then()
+      .then(
+        toast.info("Usuário atualizado com sucesso")
+      )
       .catch((err) => console.log(err));
   };
 

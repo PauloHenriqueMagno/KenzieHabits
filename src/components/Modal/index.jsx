@@ -32,7 +32,7 @@ const Modal = ({ modalType, habitId, groupId, goalId, activityId }) => {
   ) : modalType === allData[6].search ? (
     <BasicModal Data={allData[6]} apiAction={editGoal} goalId={goalId} />
   ) : modalType === allData[7].search ? (
-    <BasicModal Data={allData[7]} apiAction={createActivity} />
+    <BasicModal Data={allData[7]} apiAction={createActivity} groupId={groupId} />
   ) : modalType === allData[8].search ? (
     <BasicModal
       Data={allData[8]}
