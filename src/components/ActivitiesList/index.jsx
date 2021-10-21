@@ -4,8 +4,15 @@ import { container } from "./styles";
 import { Box } from "@material-ui/core";
 import { theme } from "./styles";
 import { ThemeProvider } from "@material-ui/core";
+import { ActivitiesContext } from "../../providers/Activities";
+import { useContext } from "react";
 
 const ActivitiesList = ({ group: { activities } }) => {
+  const { removeActivity } = useContext(ActivitiesContext);
+  const deleteActivity = (activityId) => {
+    removeActivity(activityId);
+  };
+  console.log(activities);
   return (
     <ThemeProvider theme={theme}>
       <Box sx={container}>
@@ -17,7 +24,7 @@ const ActivitiesList = ({ group: { activities } }) => {
                 <p>{activity.realization_time}</p>
               </div>
               <div className="activityActions">
-                <Delete />
+                <Delete onClick={() => deleteActivity(activity.id)} />
                 <Modal modalType="UpdateActivity" activityId={activity.id} />
               </div>
             </div>

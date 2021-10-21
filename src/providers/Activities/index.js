@@ -59,10 +59,19 @@ export const ActivitiesProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const removeActivity = (activityId, groupId) => {
+  const removeActivity = (activityId) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(`/activities/${activityId}/`)
-      .then((_) => getActivities(groupId))
+      .delete(
+        `/activities/${activityId}/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((_) => toast.success("Atividade excluida!"))
       .catch((err) => console.log(err));
   };
 
