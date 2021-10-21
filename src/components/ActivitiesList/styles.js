@@ -27,12 +27,12 @@ export const container = {
     alignItems: "center",
     backgroundColor: "#C4C4C4",
     margin: "5px 0",
-    padding: "10px 30px",
+    padding: "10px 10px",
   },
 
   ".activityContent": {
-    width: "50%",
     display: "flex",
+    flexDirection: "column",
     justifyContent: "space-between",
   },
 
@@ -47,5 +47,14 @@ export const container = {
     padding: "5px",
     cursor: "pointer",
     marginLeft: "20px",
+  },
+
+  "@media (min-width: 700px)": {
+    ".activityContainer": {
+      padding: "10px 30px",
+    },
+    ".activityContent": {
+      flexDirection: "row",
+    },
   },
 };
