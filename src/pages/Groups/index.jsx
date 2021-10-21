@@ -32,6 +32,7 @@ const Groups = () => {
 
   useEffect(() => {
     getGroups();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const subscribeToGroup = (groupId) => {
@@ -42,7 +43,7 @@ const Groups = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const handlePage = (event, newPage) => {
+  const handlePage = (newPage) => {
     getGroups("", newPage + 1);
     setPage(newPage);
   };
@@ -96,7 +97,7 @@ const Groups = () => {
                       {group.activities.length !== 0 ? (
                         group.activities.map((activitie) => {
                           return (
-                            <ListItem>
+                            <ListItem key={activitie.id}>
                               <ListItemText primary={activitie.title} />
                             </ListItem>
                           );
@@ -114,7 +115,7 @@ const Groups = () => {
                       {group.goals.length !== 0 ? (
                         group.goals.map((goal) => {
                           return (
-                            <ListItem>
+                            <ListItem key={goal.id}>
                               <ListItemText primary={goal.title} />
                             </ListItem>
                           );
@@ -145,8 +146,10 @@ const Groups = () => {
             );
           })}
         </StyledPaper>
+        <div className="addGroup">
+          <Modal modalType="CreateGroup" />
+        </div>
       </Content>
-      <Modal modalType="CreateGroup" />
     </Container>
   );
 };
