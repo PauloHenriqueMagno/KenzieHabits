@@ -26,8 +26,8 @@ const GroupDetails = () => {
     (groupOnList) => groupOnList.id == groupId
   )[0];
 
-  const { activities, goals } = group;
 
+  const { activities, goals } = group;
   return (
     <Container>
       <Header />
@@ -37,7 +37,7 @@ const GroupDetails = () => {
             <Typography sx={{ marginRight: 5 }}>
               Atividades do grupo - {group.name}
             </Typography>
-            <Modal modalType="CreateActivity" />
+            <Modal modalType="CreateActivity" groupId={groupId} />
           </div>
           <div className="actionsContent">
             {activities.length === 0 ? (
@@ -47,6 +47,8 @@ const GroupDetails = () => {
             )}
           </div>
         </StyledPaper>
+
+        
         <StyledPaper>
           <div className="actionsHeader">
             <Typography sx={{ marginRight: 5 }}>
