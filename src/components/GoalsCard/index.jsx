@@ -57,8 +57,8 @@ const GoalsCard = ({
               <Modal modalType="UpdateGoal" />
             </IconButton>
 
-            <IconButton aria-label="delete" size="small">
-              <Delete onClick={deleteGoal} fontSize="small" />
+            <IconButton aria-label="delete" size="small" onClick={deleteGoal}>
+              <Delete fontSize="small" />
             </IconButton>
           </CardActions>
         </StyledCard>
