@@ -1,7 +1,6 @@
 import {Button, Container, Logo, Avatar} from './style.js';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Modal from '../Modal';
-// <Avatar><AccountCircleIcon /></Avatar>
 
 const Header = () => {
   return (
