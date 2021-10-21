@@ -63,14 +63,8 @@ const Cards = ({
             />
           </FormGroup>
           <CardActions>
-            {/* <IconButton aria-label="add" size="small"> */}
-            <Modal modalType="UpdateHabit" habitId={id} />
-            {/* ADICIONAR O ID PARA EDITAR O HÁBITO */}
-            {/* </IconButton> */}
-
             <IconButton aria-label="delete" size="small">
               <Modal modalType="UpdateHabit" habitId={id} />
-              {/* <Edit onClick={edit} fontSize="small" /> */}
             </IconButton>
             <IconButton onClick={deleteHabit} aria-label="delete" size="small">
               <Delete fontSize="small" />
