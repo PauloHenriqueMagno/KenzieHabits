@@ -13,7 +13,11 @@ const Dashboard = () => {
   // console.log(habits);
 
   useEffect(() => {
-    getHabits();
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
+
+    if(!!user){
+      getHabits();
+    };
   }, []);
 
   return (

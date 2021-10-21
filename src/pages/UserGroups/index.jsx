@@ -19,8 +19,12 @@ const UserGroups = () => {
     const groups = userGroups.filter(group => group.creator.id !== user.id);
 
     useEffect(()=>{
-        getUserGroup();
-    },[]);
+        const user = JSON.parse(localStorage.getItem("khabitz/user"));
+
+        if(!!user){
+            getUserGroup();
+        };
+    }, []);
 
     return (
         <>
@@ -48,7 +52,7 @@ const UserGroups = () => {
                     <Modal modalType="CreateGroup" />
                 </OpenModalCreateGroup>
             </Container>
-      </>
+        </>
     );
 };
 
