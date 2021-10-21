@@ -1,4 +1,4 @@
-import { Delete, Edit } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 import {
   IconButton,
   FormGroup,
@@ -8,12 +8,32 @@ import {
   Box,
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
+import { useState } from "react";
+import Modal from "../../components/Modal";
 
 const Cards = ({
-  habits: { category, title, difficulty, frequency, how_much_achieved },
+  habits: {
+    category,
+    title,
+    difficulty,
+    frequency,
+    how_much_achieved,
+    achieved,
+    id,
+  },
   del,
   edit,
 }) => {
+  const [achievedGoal, setAchievedGoal] = useState(achieved);
+
+  const handleAchieved = (event) => {
+    setAchievedGoal(!achievedGoal);
+    edit({ data: { achieved: !achievedGoal }, id: id });
+  };
+
+  const deleteHabit = () => {
+    del(id);
+  };
   return (
     <>
       <div>
@@ -34,16 +54,18 @@ const Cards = ({
           <FormGroup>
             <FormControlLabel
               label="Finalizado?"
-              control={<Checkbox defaultChecked />}
+              control={
+                <Checkbox checked={achievedGoal} onChange={handleAchieved} />
+              }
             />
           </FormGroup>
           <CardActions>
             <IconButton aria-label="add" size="small">
-              <Delete onClick={del} fontSize="small" />
+              <Modal modalType="UpdateHabit" />
             </IconButton>
 
             <IconButton aria-label="delete" size="small">
-              <Edit onClick={edit} fontSize="small" />
+              <Delete onClick={deleteHabit} fontSize="small" />
             </IconButton>
           </CardActions>
         </StyledCard>
