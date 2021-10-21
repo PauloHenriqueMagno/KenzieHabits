@@ -15,9 +15,7 @@ const Modal = ({ modalType, habitId, groupId, goalId, activityId }) => {
   const { editGroup } = useContext(UserGroupsContext);
   const { createGoal, editGoal } = useContext(GoalsContext);
   const { createActivity, editActivity } = useContext(ActivitiesContext);
-  
 
-  console.log();
   return modalType === allData[0].search ? (
     <BasicModal Data={allData[0]} apiAction={addHabit} />
   ) : modalType === allData[1].search ? (
@@ -33,7 +31,11 @@ const Modal = ({ modalType, habitId, groupId, goalId, activityId }) => {
   ) : modalType === allData[6].search ? (
     <BasicModal Data={allData[6]} apiAction={editGoal} goalId={goalId} />
   ) : modalType === allData[7].search ? (
-    <BasicModal Data={allData[7]} apiAction={createActivity} groupId={groupId} />
+    <BasicModal
+      Data={allData[7]}
+      apiAction={createActivity}
+      groupId={groupId}
+    />
   ) : modalType === allData[8].search ? (
     <BasicModal
       Data={allData[8]}
