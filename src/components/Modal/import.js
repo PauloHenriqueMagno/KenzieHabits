@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CancelIcon from "@material-ui/icons/Cancel";
 import AddButton from "../AddButton";
 import { Edit } from "@material-ui/icons";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 export default function BasicModal({
   Data,
@@ -38,8 +39,8 @@ export default function BasicModal({
   const handleButton = (data) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     apiAction(
-      Data.search === "CreateHabit" 
-        ? { data: Data.dataCaptor(data), id: user.id }
+      Data.search === "CreateHabit"
+        ? { ...Data.dataCaptor(data), user: user.id }
         : Data.search === "UpdateHabit"
         ? { data: Data.dataCaptor(data), id: habitId }
         : Data.search === "UpdateUser"
@@ -49,18 +50,15 @@ export default function BasicModal({
         : Data.search === "UpdateGroup"
         ? { data: Data.dataCaptor(data), id: groupId }
         : Data.search === "CreateGoal"
-        ? { data: Data.dataCaptor(data), id: groupId }
+        ? { ...Data.dataCaptor(data), group: groupId }
         : Data.search === "UpdateGoal"
         ? { data: Data.dataCaptor(data), id: goalId }
         : Data.search === "CreateActivity"
-        ? { data: Data.dataCaptor(data), id: groupId }
+        ? { ...Data.dataCaptor(data), group: groupId }
         : Data.search === "UpdateActivity"
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
-    if (Data.action === "create") {
-      reset();
-    }
   };
 
   return (
@@ -71,7 +69,13 @@ export default function BasicModal({
           title={Data.triggerBtn}
           style={{ width: "35px" }}
         >
-          {Data.action === "create" ? <AddButton /> : <Edit sx={edit} />}
+          {Data.action === "create" ? (
+            <AddButton />
+          ) : Data.action === "update" && Data.search === "UpdateUserName" ? (
+            <AccountCircleIcon />
+          ) : Data.action === "update" ? (
+            <Edit sx={edit} />
+          ) : null}
         </div>
         <Modal
           open={open}
