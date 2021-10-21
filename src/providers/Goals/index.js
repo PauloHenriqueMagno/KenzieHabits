@@ -59,15 +59,11 @@ export const GoalsProvider = ({ children }) => {
   const deleteGoal = (goalId) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(
-        `/goals/${goalId}/`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${user.access}`,
-          },
-        }
-      )
+      .delete(`/goals/${goalId}/`, {
+        headers: {
+          Authorization: `Bearer ${user.access}`,
+        },
+      })
       .then((_) => toast.success("Objetivo excluido!"))
       .catch((err) => console.log(err));
   };
