@@ -32,8 +32,8 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
+        setActivities([...activities, response.data]);
         getActivities(response.data.group);
-        console.log(activities);
         toast.info(`Atividade criada com sucesso!`);
       })
       .catch((err) => console.log(err));
@@ -53,7 +53,6 @@ export const ActivitiesProvider = ({ children }) => {
       .then((response) => {
         setActivities(newList);
         toast.info(`Atividade atualizada com sucesso!`);
-        console.log(activities);
       })
       .catch((err) => console.log(err));
   };
@@ -61,16 +60,15 @@ export const ActivitiesProvider = ({ children }) => {
   const removeActivity = (activityId) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .delete(
-        `/activities/${activityId}/`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${user.access}`,
-          },
-        }
-      )
-      .then((_) => toast.success("Atividade excluida!"))
+      .delete(`/activities/${activityId}/`, {
+        headers: {
+          Authorization: `Bearer ${user.access}`,
+        },
+      })
+      .then((_) => {
+        setActivities(activities.filter((act) => act.id !== activityId));
+        toast.success("Atividade excluida!");
+      })
       .catch((err) => console.log(err));
   };
 
