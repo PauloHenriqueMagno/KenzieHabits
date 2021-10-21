@@ -23,12 +23,12 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const editHabit = ({ data, id }) => {
-   
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    const newList = habits.map((habit) =>
-      habit.id === id ? data : habit
-    );
-    console.log(habits)
+    const newList = habits.map((habit) => (habit.id === id ? data : habit));
+    console.log(habits);
+
+
+    console.log(data);
 
     api
       .patch(`/habits/${id}/`, data, {
@@ -49,11 +49,18 @@ export const HabitsProvider = ({ children }) => {
     const newHabitsList = habits.filter(
       (habitOnList) => habitOnList.id !== habitToDelete
     );
-    setHabits(newHabitsList);
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    console.log(user);
     api
-      .delete(`/habits/${habitToDelete}/`)
-      .then()
+      .delete(`/habits/${habitToDelete}/`, {
+        headers: {
+          Authorization: `
+            Bearer ${user.access}`,
+        },
+      })
+      .then((_) => toast.success("Objetivo excluido!"))
       .catch((err) => console.log(err));
+    setHabits(newHabitsList);
   };
 
   const getHabits = () => {

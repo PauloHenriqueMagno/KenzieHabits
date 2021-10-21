@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
 import GoalsCard from "../../components/GoalsCard";
+import ActivitiesList from "../../components/ActivitiesList";
 import { Delete, Edit } from "@material-ui/icons";
 import { UserGroupsContext } from "../../providers/UserGroups";
 import { Container, Content, StyledPaper } from "./styles";
@@ -42,36 +43,12 @@ const GroupDetails = () => {
             {activities.length === 0 ? (
               <Typography>Nenhuma atividade cadastrada</Typography>
             ) : (
-              activities.map((activity) => {
-                return (
-                  <List>
-                    <ListItem
-                      secondaryAction={
-                        <>
-                          <IconButton edge="end">
-                            <Modal
-                              modalType="UpdateActivity"
-                              activityId={activity.id}
-                            />
-                            {/* <Edit /> */}
-                          </IconButton>
-                          <IconButton edge="end">
-                            <Delete />
-                          </IconButton>
-                        </>
-                      }
-                    >
-                      <ListItemText
-                        primary={activity.title}
-                        secondary={activity.realization_time}
-                      />
-                    </ListItem>
-                  </List>
-                );
-              })
+              <ActivitiesList group={group} />
             )}
           </div>
         </StyledPaper>
+
+        
         <StyledPaper>
           <div className="actionsHeader">
             <Typography sx={{ marginRight: 5 }}>
@@ -81,7 +58,7 @@ const GroupDetails = () => {
           </div>
           <div className="goalsContent">
             {goals.length === 0 ? (
-              <Typography>Nenhuma atividade cadastrada</Typography>
+              <Typography>Nenhum objetivo cadastrado</Typography>
             ) : (
               goals.map((goal) => {
                 return (
