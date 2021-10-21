@@ -47,6 +47,8 @@ const GroupDetails = () => {
             )}
           </div>
         </StyledPaper>
+
+        
         <StyledPaper>
           <div className="actionsHeader">
             <Typography sx={{ marginRight: 5 }}>
