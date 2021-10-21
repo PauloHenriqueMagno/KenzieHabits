@@ -43,7 +43,7 @@ const Groups = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
-  const handlePage = (newPage) => {
+  const handlePage = (event, newPage) => {
     getGroups("", newPage + 1);
     setPage(newPage);
   };
