@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export const ActivitiesContext = createContext([]);
 
@@ -28,19 +29,33 @@ export const ActivitiesProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => getActivities(response.group))
+      .then((response) => {
+        /* getActivities(response.group); */
+        setActivities([...activities, response.data]);
+        toast.info(`Atividade criada com sucesso!`);
+        console.log(activities);
+      })
       .catch((err) => console.log(err));
+    console.log(newActivity);
   };
 
-  const editActivity = (editedActivity, activityId) => {
+  const editActivity = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = activities.map((activity) =>
+      activity.id === id ? data : activity
+    );
     api
-      .patch(`/activities/${activityId}/`, editedActivity, {
+      .patch(`/activities/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => getActivities(response.group))
+      .then((response) => {
+        /* getActivities(response.group); */
+        setActivities(newList);
+        toast.info(`Atividade atualizada com sucesso!`);
+        console.log(activities);
+      })
       .catch((err) => console.log(err));
   };
 

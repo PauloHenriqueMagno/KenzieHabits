@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 export const GroupsContext = createContext([]);
@@ -7,9 +8,22 @@ export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
 
   const subscribeOnGroup = (groupToSubscribe) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
     api
-      .post(`/groups/${groupToSubscribe.id}/subscribe`)
-      .then()
+      .post(
+        `/groups/${groupToSubscribe}/subscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.access}`,
+          },
+        }
+      )
+      .then((response) => {
+        toast.info(`Inscrição realizada com sucesso!`);
+        setGroups([...groups, response.data]);
+        console.log(groups);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -21,24 +35,27 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then()
+      .then((response) => {
+        const newList = groups.push(response.data);
+        setGroups(newList);
+        toast.info(`Grupo criado com sucesso!`);
+      })
       .catch((err) => console.log(err));
   };
 
-  const getGroups = (category, page = undefined) => {
+  const getGroups = (category = "", page = undefined) => {
     if (!!page) {
       api
-        .get(page)
+        .get(`/groups/?category=${category}&page=${page}`)
         .then((response) => setGroups(response.data))
         .catch((err) => console.log(err));
     } else {
       api
         .get(`/groups/?category=${category}`)
-        .then((response) => setGroups(response))
+        .then((response) => setGroups(response.data))
         .catch((err) => console.log(err));
     }
   };
-
   return (
     <GroupsContext.Provider
       value={{

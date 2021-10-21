@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../services/api";
+import { toast } from "react-toastify";
 
 export const HabitsContext = createContext([]);
 
@@ -14,24 +15,37 @@ export const HabitsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => setHabits([...habits, response.data]))
+      .then((response) => {
+        setHabits([...habits, response.data]);
+        toast.info(`Hábito criado com sucesso!`);
+        console.log(habits);
+      })
       .catch((err) => console.log(err));
   };
 
-  const editHabit = (editedHabit, habitId) => {
-    const newHabitsList = habits.filter(
-      (habitOnList) => habitOnList.id !== editedHabit.id
-    );
-    setHabits([newHabitsList, editedHabit]);
+  const editHabit = ({ data, id }) => {
+   
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = habits.map((habit) =>
+      habit.id === id ? data : habit
+    );
+
+    console.log(data)
     api
-      .patch(`/habits/${habitId}`, editedHabit, {
+      .patch(`/habits/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then()
-      .catch((err) => console.log(err));
+      .then(() => {
+        setHabits(newList);
+        toast.info(`Hábito atualizado com sucesso!`);
+        console.log(habits);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(data);
+      });
   };
 
   const deleteHabit = (habitToDelete) => {
@@ -47,6 +61,7 @@ export const HabitsProvider = ({ children }) => {
 
   const getHabits = () => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    console.log(user.access);
     api
       .get("/habits/personal/", {
         headers: {
