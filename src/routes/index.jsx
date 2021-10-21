@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import UserGroups from "../pages/UserGroups";
 import Groups from "../pages/Groups";
+import LoadUserData from '../components/LoadUserData';
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Routes = () => {
   return (
     <>
+      <LoadUserData />
       <Switch>
         <Route path="/login">
           <Login />
