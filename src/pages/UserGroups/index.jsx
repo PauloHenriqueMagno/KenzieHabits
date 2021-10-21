@@ -14,7 +14,11 @@ const UserGroups = () => {
     const { userGroups, getUserGroup } = useContext(UserGroupsContext);
 
     useEffect(()=>{
-        getUserGroup()
+        const user = JSON.parse(localStorage.getItem("khabitz/user"));
+
+        if(!!user){
+            getUserGroup()
+        }
     },[])
 
     return (
