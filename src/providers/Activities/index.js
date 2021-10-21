@@ -33,15 +33,18 @@ export const ActivitiesProvider = ({ children }) => {
         /* getActivities(response.group); */
         setActivities([...activities, response.data]);
         toast.info(`Atividade criada com sucesso!`);
-        console.log(activities)
+        console.log(activities);
       })
       .catch((err) => console.log(err));
-      console.log(newActivity);
-    };
-    
-    const editActivity = ({ data, id }) => {
-      const user = JSON.parse(localStorage.getItem("khabitz/user"));
-      api
+    console.log(newActivity);
+  };
+
+  const editActivity = ({ data, id }) => {
+    const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = activities.map((activity) =>
+      activity.id === id ? data : activity
+    );
+    api
       .patch(`/activities/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
@@ -49,9 +52,9 @@ export const ActivitiesProvider = ({ children }) => {
       })
       .then((response) => {
         /* getActivities(response.group); */
-        setActivities([...activities, response.data]);
+        setActivities(newList);
         toast.info(`Atividade atualizada com sucesso!`);
-        console.log(activities)
+        console.log(activities);
       })
       .catch((err) => console.log(err));
   };

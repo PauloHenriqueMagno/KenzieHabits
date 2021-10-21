@@ -9,14 +9,18 @@ export const UserGroupsProvider = ({ children }) => {
 
   const editGroup = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = userGroups.map((userGroup) =>
+      userGroup.id === id ? data : userGroup
+    );
     api
       .patch(`/groups/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => {
-        setUserGroups([...userGroups, response.data])
+      .then(() => {
+        setUserGroups(newList)
+        getUserGroup()
         toast.info("Grupo criado com sucesso!")
         console.log(userGroups)
       })

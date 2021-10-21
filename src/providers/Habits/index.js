@@ -24,19 +24,21 @@ export const HabitsProvider = ({ children }) => {
   };
 
   const editHabit = ({ data, id }) => {
-    // const newHabitsList = habits.filter(
-    //   (habitOnList) => habitOnList.id !== data.id
-    // );
-    // setHabits([newHabitsList, data]);
+   
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = habits.map((habit) =>
+      habit.id === id ? data : habit
+    );
+
+    console.log(data)
     api
       .patch(`/habits/${id}/`, data, {
         headers: {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((response) => {
-        setHabits([...habits, response.data]);
+      .then(() => {
+        setHabits(newList);
         toast.info(`Hábito atualizado com sucesso!`);
         console.log(habits);
       })

@@ -36,7 +36,8 @@ export const GroupsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        setGroups([...groups, response.data])
+        const newList = groups.push(response.data);
+        setGroups(newList);
         toast.info(`Grupo criado com sucesso!`);
       })
       .catch((err) => console.log(err));

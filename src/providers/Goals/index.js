@@ -38,6 +38,9 @@ export const GoalsProvider = ({ children }) => {
 
   const editGoal = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+    const newList = goals.map((goal) =>
+      goal.id === id ? data : goal
+    );
     api
       .patch(`/goals/${id}/`, data, {
         headers: {
@@ -46,7 +49,7 @@ export const GoalsProvider = ({ children }) => {
       })
       .then((response) => {
         /* getGoals(response.group); */
-        setGoals([...goals, response.data]);
+        setGoals(newList);
         toast.info(`Objetivo atualizado com sucesso!`);
         console.log(goals);
       })

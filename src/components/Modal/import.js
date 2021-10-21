@@ -59,9 +59,6 @@ export default function BasicModal({
         ? { data: Data.dataCaptor(data), id: activityId }
         : Data.dataCaptor(data)
     );
-    if (Data.action === "create") {
-      reset();
-    }
   };
 
   return (
