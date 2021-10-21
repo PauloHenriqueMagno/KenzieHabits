@@ -1,4 +1,4 @@
-import { Delete, Edit } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 import {
   IconButton,
   FormGroup,
@@ -54,11 +54,11 @@ const GoalsCard = ({
           </FormGroup>
           <CardActions>
             <IconButton aria-label="add" size="small">
-              <Modal modalType="UpdateGoal" />
+              <Modal modalType="UpdateGoal" goalId={id} />
             </IconButton>
 
-            <IconButton aria-label="delete" size="small">
-              <Delete onClick={deleteGoal} fontSize="small" />
+            <IconButton aria-label="delete" size="small" onClick={deleteGoal}>
+              <Delete fontSize="small" />
             </IconButton>
           </CardActions>
         </StyledCard>

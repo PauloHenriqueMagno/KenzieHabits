@@ -7,7 +7,7 @@ import { ThemeProvider } from "@material-ui/core";
 import { ActivitiesContext } from "../../providers/Activities";
 import { useContext } from "react";
 
-const ActivitiesList = ({ group: { activities } }) => {
+const ActivitiesList = ({ activities }) => {
   const { removeActivity } = useContext(ActivitiesContext);
   const deleteActivity = (activityId) => {
     removeActivity(activityId);
@@ -18,7 +18,7 @@ const ActivitiesList = ({ group: { activities } }) => {
       <Box sx={container}>
         {activities.map((activity) => {
           return (
-            <div className="activityContainer">
+            <div className="activityContainer" key={activity.id}>
               <div className="activityContent">
                 <p>{activity.title}</p>
                 <p>{activity.realization_time}</p>
