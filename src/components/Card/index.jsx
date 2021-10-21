@@ -8,9 +8,10 @@ import {
   Box,
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
+import Modal from "../Modal/index";
 
 const Cards = ({
-  habits: { category, title, difficulty, frequency, how_much_achieved },
+  habits: { category, title, difficulty, frequency, how_much_achieved, id },
   del,
   edit,
 }) => {
@@ -43,7 +44,8 @@ const Cards = ({
             </IconButton>
 
             <IconButton aria-label="delete" size="small">
-              <Edit onClick={edit} fontSize="small" />
+              <Modal modalType="UpdateHabit" habitId={id} />
+              {/* <Edit onClick={edit} fontSize="small" /> */}
             </IconButton>
           </CardActions>
         </StyledCard>

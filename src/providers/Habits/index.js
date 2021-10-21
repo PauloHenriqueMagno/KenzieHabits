@@ -18,7 +18,6 @@ export const HabitsProvider = ({ children }) => {
       .then((response) => {
         setHabits([...habits, response.data]);
         toast.info(`Hábito criado com sucesso!`);
-        console.log(habits);
       })
       .catch((err) => console.log(err));
   };
@@ -30,7 +29,6 @@ export const HabitsProvider = ({ children }) => {
       habit.id === id ? data : habit
     );
 
-    console.log(data)
     api
       .patch(`/habits/${id}/`, data, {
         headers: {
@@ -40,11 +38,9 @@ export const HabitsProvider = ({ children }) => {
       .then(() => {
         setHabits(newList);
         toast.info(`Hábito atualizado com sucesso!`);
-        console.log(habits);
       })
       .catch((err) => {
         console.log(err);
-        console.log(data);
       });
   };
 
@@ -61,7 +57,6 @@ export const HabitsProvider = ({ children }) => {
 
   const getHabits = () => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    console.log(user.access);
     api
       .get("/habits/personal/", {
         headers: {

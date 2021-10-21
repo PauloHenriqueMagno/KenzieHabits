@@ -25,8 +25,8 @@ const GroupDetails = () => {
     (groupOnList) => groupOnList.id == groupId
   )[0];
 
-  const { activities, goals } = group;
 
+  const { activities, goals } = group;
   return (
     <Container>
       <Header />
@@ -36,7 +36,7 @@ const GroupDetails = () => {
             <Typography sx={{ marginRight: 5 }}>
               Atividades do grupo - {group.name}
             </Typography>
-            <Modal modalType="CreateActivity" />
+            <Modal modalType="CreateActivity" groupId={groupId} />
           </div>
           <div className="actionsContent">
             {activities.length === 0 ? (
@@ -49,7 +49,11 @@ const GroupDetails = () => {
                       secondaryAction={
                         <>
                           <IconButton edge="end">
-                            <Edit />
+                            <Modal
+                              modalType="UpdateActivity"
+                              activityId={activity.id}
+                            />
+                            {/* <Edit /> */}
                           </IconButton>
                           <IconButton edge="end">
                             <Delete />

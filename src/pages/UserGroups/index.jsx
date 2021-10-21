@@ -12,7 +12,6 @@ import GroupsList from "../../components/GroupsList";
 
 const UserGroups = () => {
     const { userGroups, getUserGroup } = useContext(UserGroupsContext);
-
     useEffect(()=>{
         getUserGroup()
     },[])
@@ -23,8 +22,8 @@ const UserGroups = () => {
             <Container>    
                 <GroupsList groupList={userGroups} />
 
+        <Modal modalType="CreateGroup" />
                 <OpenModalCreateGroup>
-                    <Modal modalType="CreateGroup" />
                 </OpenModalCreateGroup>
             </Container>
       </>
