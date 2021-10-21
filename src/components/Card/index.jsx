@@ -66,8 +66,8 @@ const Cards = ({
             <IconButton aria-label="delete" size="small">
               <Modal modalType="UpdateHabit" habitId={id} />
             </IconButton>
-            <IconButton onClick={deleteHabit} aria-label="delete" size="small">
-              <Delete fontSize="small" />
+            <IconButton onClick={deleteHabit} aria-label="delete">
+              <Delete />
             </IconButton>
           </CardActions>
         </StyledCard>
