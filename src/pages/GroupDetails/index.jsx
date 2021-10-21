@@ -1,32 +1,32 @@
 import { useParams } from "react-router";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
 import GoalsCard from "../../components/GoalsCard";
 import ActivitiesList from "../../components/ActivitiesList";
-import { Delete, Edit } from "@material-ui/icons";
 import { UserGroupsContext } from "../../providers/UserGroups";
-import { Container, Content, StyledPaper } from "./styles";
-import {
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
 import { GoalsContext } from "../../providers/Goals";
+import { Container, Content, StyledPaper } from "./styles";
+import { Typography } from "@material-ui/core";
+import { ActivitiesContext } from "../../providers/Activities";
 
 const GroupDetails = () => {
   const { groupId } = useParams();
   const { userGroups } = useContext(UserGroupsContext);
-  const { deleteGoal, editGoal } = useContext(GoalsContext);
+  const { goals, deleteGoal, editGoal, getGoals } = useContext(GoalsContext);
+  const { activities, getActivities } = useContext(ActivitiesContext);
 
   const group = userGroups.filter(
+    // eslint-disable-next-line eqeqeq
     (groupOnList) => groupOnList.id == groupId
   )[0];
 
-  const { activities, goals } = group;
+  useEffect(() => {
+    getGoals(groupId);
+    getActivities(groupId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container>
@@ -37,13 +37,13 @@ const GroupDetails = () => {
             <Typography sx={{ marginRight: 5 }}>
               Atividades do grupo - {group.name}
             </Typography>
-            <Modal modalType="CreateActivity" />
+            <Modal modalType="CreateActivity" groupId={groupId} />
           </div>
           <div className="actionsContent">
             {activities.length === 0 ? (
               <Typography>Nenhuma atividade cadastrada</Typography>
             ) : (
-              <ActivitiesList group={group} />
+              <ActivitiesList activities={activities} />
             )}
           </div>
         </StyledPaper>
@@ -52,7 +52,7 @@ const GroupDetails = () => {
             <Typography sx={{ marginRight: 5 }}>
               Objetivos do grupo - {group.name}
             </Typography>
-            <Modal modalType="CreateGoal" />
+            <Modal modalType="CreateGoal" groupId={group.id} />
           </div>
           <div className="goalsContent">
             {goals.length === 0 ? (

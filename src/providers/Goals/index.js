@@ -8,19 +8,13 @@ export const GoalsProvider = ({ children }) => {
   const [goals, setGoals] = useState([]);
 
   const getGoals = (groupId, page = undefined) => {
-    if (!!page) {
-      api
-        .get(page)
-        .then((response) => setGoals(response))
-        .catch((err) => console.log(err));
-    } else {
-      api.get(`/goals/?group=${groupId}`);
-    }
+    api
+      .get(`/goals/?group=${groupId}`)
+      .then((response) => setGoals(response.data.results));
   };
 
   const createGoal = (newGoal) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    console.log(newGoal);
     api
       .post("/goals/", newGoal, {
         headers: {
@@ -28,16 +22,13 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        /* getGoals(response.group) */
         setGoals([...goals, response.data]);
         toast.info(`Objetivo criado com sucesso!`);
-        console.log(goals);
       })
       .catch((err) => console.log(err));
   };
 
   const editGoal = ({ data, id }) => {
-    console.log(data, id);
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
     const newList = goals.map((goal) => (goal.id === id ? data : goal));
     api
@@ -47,13 +38,10 @@ export const GoalsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        /* getGoals(response.group); */
         setGoals(newList);
         toast.info(`Objetivo atualizado com sucesso!`);
-        console.log(goals);
       })
       .catch((err) => console.log(err));
-    // .then((response) => getGoals(response.group))
   };
 
   const deleteGoal = (goalId) => {
@@ -64,10 +52,12 @@ export const GoalsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((_) => toast.success("Objetivo excluido!"))
+      .then((_) => {
+        setGoals(goals.filter((goal) => goal.id !== goalId));
+        toast.success("Objetivo excluido!");
+      })
       .catch((err) => console.log(err));
   };
-
   return (
     <GoalsContext.Provider
       value={{
