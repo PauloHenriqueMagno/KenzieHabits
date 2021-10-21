@@ -18,7 +18,7 @@ export const ActivitiesProvider = ({ children }) => {
     } else {
       api
         .get(`/activities/?group=${groupId}`)
-        .then((response) => setActivities(response.data))
+        .then((response) => setActivities(response.data.results))
         .catch((err) => console.log(err));
     }
   };
