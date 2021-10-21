@@ -8,8 +8,9 @@ import {
   Box,
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Modal from "../../components/Modal";
+import { HabitsContext } from "../../providers/Habits";
 
 const Cards = ({
   habits: {
@@ -25,10 +26,12 @@ const Cards = ({
   edit,
 }) => {
   const [achievedGoal, setAchievedGoal] = useState(achieved);
+  const { getHabits } = useContext(HabitsContext);
 
   const handleAchieved = (event) => {
     setAchievedGoal(!achievedGoal);
     edit({ data: { achieved: !achievedGoal }, id: id });
+    getHabits();
   };
 
   const deleteHabit = () => {
