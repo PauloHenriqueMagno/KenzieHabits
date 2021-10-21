@@ -1,7 +1,7 @@
 import { styled } from "@material-ui/core/styles";
 
 export const Container = styled("main")({
-  width: "100vw",
+  Maxwidth: "100vw",
 });
 
 export const Content = styled("div")({

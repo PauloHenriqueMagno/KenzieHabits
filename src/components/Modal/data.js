@@ -73,6 +73,7 @@ const updateHabitData = {
       difficulty: difficulty,
       frequency: frequency,
       how_much_achieved: how_much_achieved,
+      achieved: how_much_achieved === 100,
     };
     return newData;
   },

@@ -24,6 +24,11 @@ export const HabitsProvider = ({ children }) => {
 
   const editHabit = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
+
+    const newList = habits.map((habit) => (habit.id === id ? data : habit));
+
+    console.log(data);
+
     api
       .patch(`/habits/${id}/`, data, {
         headers: { Authorization: `Bearer ${user.access}` },
@@ -50,7 +55,7 @@ export const HabitsProvider = ({ children }) => {
             Bearer ${user.access}`,
         },
       })
-      .then((_) => toast.success("Objetivo excluido!"))
+      .then((_) => toast.info("Hábito excluido!"))
       .catch((err) => console.log(err));
     setHabits(newHabitsList);
   };
