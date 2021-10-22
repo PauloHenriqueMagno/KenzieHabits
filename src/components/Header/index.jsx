@@ -1,8 +1,16 @@
-import { Button, Container, Logo, IconUser, UserName } from "./style.js";
-import Modal from "../Modal";
+import {
+  Button,
+  Container,
+  Logo,
+  IconUser,
+  UserName,
+} from './style.js';
+import Modal from '../Modal';
+import { useContext } from 'react';
+import { UserContext } from '../../providers/User/index.js';
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem("khabitz/user"));
+  const { user } = useContext(UserContext);
 
   const path = window.location.pathname;
 
@@ -14,7 +22,7 @@ const Header = () => {
         </Logo>
         <UserName>
           <p>{user.username}</p>
-          <Modal id="UserIcon" modalType="UpdateUserName" />
+          <UserPopover id="UserIcon"/>
         </UserName>
       </IconUser>
       <Button to='/dashboard' select={path==="/dashboard" ? 'true' : ''} >Meus Habitos</Button>

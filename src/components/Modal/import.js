@@ -13,7 +13,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import CancelIcon from "@material-ui/icons/Cancel";
 import AddButton from "../AddButton";
 import { Edit } from "@material-ui/icons";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 export default function BasicModal({
   Data,
@@ -72,8 +71,11 @@ export default function BasicModal({
         <Box title={Data.triggerBtn} sx={buttonContainer} onClick={handleOpen}>
           {Data.action === "create" ? (
             <AddButton className="button"></AddButton>
-          ) : Data.action === "update" && Data.search === "UpdateUserName" ? (
-            <AccountCircleIcon className="button" />
+          ) : Data.search === "UpdateUserName" && Data.action === "update" ? (
+            <Button
+            >
+              Editar usuário
+            </Button>
           ) : Data.action === "update" ? (
             <Edit className="button" />
           ) : null}
