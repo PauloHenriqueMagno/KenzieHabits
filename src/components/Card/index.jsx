@@ -39,8 +39,8 @@ const Cards = ({
         title,
         difficulty,
         frequency,
-        id,
       },
+      id,
     });
     getHabits();
   };
