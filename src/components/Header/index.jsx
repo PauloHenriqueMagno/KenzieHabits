@@ -5,9 +5,9 @@ import {
   IconUser,
   UserName,
 } from './style.js';
-import Modal from '../Modal';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/User/index.js';
+import UserPopover from "../popover"
 
 const Header = () => {
   const { user } = useContext(UserContext);
