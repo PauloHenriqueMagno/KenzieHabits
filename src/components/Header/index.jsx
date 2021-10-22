@@ -1,22 +1,17 @@
-import {
-  Button,
-  Container,
-  Logo,
-  IconUser,
-  UserName,
-} from './style.js';
-import Modal from '../Modal';
+import { Button, Container, Logo, IconUser, UserName } from "./style.js";
+import Modal from "../Modal";
 
 const Header = () => {
   const user = JSON.parse(localStorage.getItem("khabitz/user"));
 
   const path = window.location.pathname;
 
-  console.log(path);
   return (
     <Container>
       <IconUser>
-        <Logo to='/dashboard' >K<span>HABIT</span>Z</Logo>
+        <Logo to="/dashboard">
+          K<span>HABIT</span>Z
+        </Logo>
         <UserName>
           <p>{user.username}</p>
           <Modal id="UserIcon" modalType="UpdateUserName" />
