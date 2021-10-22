@@ -24,10 +24,10 @@ const Dashboard = () => {
         {habits.length === 0 ? (
           <Typography>Nenhum hábito cadastrado</Typography>
         ) : (
-          habits.map((habits, index) => {
+          habits.map((habits) => {
             return (
               <Cards
-                key={index}
+                key={habits.id}
                 habits={habits}
                 del={deleteHabit}
                 edit={editHabit}
