@@ -18,7 +18,7 @@ const Header = () => {
         </UserName>
       </IconUser>
       <Button to="/dashboard" select={path === "/dashboard"}>
-        Meus Habitos
+        Meus Hábitos
       </Button>
       <Button to="/dashboard/groups" select={path === "/dashboard/groups"}>
         Meus Grupos
