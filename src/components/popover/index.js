@@ -31,6 +31,7 @@ export default function UserPopover() {
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
+        sx={{ ":hover": { backgroundColor: "transparent" } }}
       >
         <AccountCircleIcon>Open Popover</AccountCircleIcon>
       </IconButton>
