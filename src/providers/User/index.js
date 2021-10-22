@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
 
   const editUser = (editedUser) => {
     setUser(editedUser);
+    const { username } = editedUser
     const userInfo = JSON.parse(localStorage.getItem("khabitz/user"));
     api
       .patch(`/users/${userInfo.id}/`, editedUser, {
@@ -21,7 +22,10 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${userInfo.access}`,
         },
       })
-      .then(toast.info("Usuário atualizado com sucesso"))
+      .then( response => {
+        toast.info("Usuário atualizado com sucesso")
+        localStorage.setItem("khabitz/user", JSON.stringify({...userInfo, username}));
+      })
       .catch((_) =>
         toast.error("Erro ao editar suas informações, tente novamente!")
       );

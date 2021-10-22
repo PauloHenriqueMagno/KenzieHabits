@@ -1,14 +1,17 @@
 import { useHistory } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { UserContext } from "../../providers/User/index.js";
 
 const LoadUserData = () => {
     const history = useHistory();
+    const { addUser } = useContext(UserContext);
     
     const [path] = useState(window.location.pathname);
-
+    
     useEffect(()=>{
         const user = JSON.parse(localStorage.getItem("khabitz/user"));
+        addUser(user);
 
         switch(path){
             case "/":
