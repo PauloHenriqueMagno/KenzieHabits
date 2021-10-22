@@ -6,7 +6,8 @@ import { Box } from "@material-ui/system";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import { IconButton } from "@material-ui/core";
 import { useHistory } from "react-router";
-import { buttonContainer, popover } from "./styles";
+import { buttonContainer } from "./styles";
+
 export default function UserPopover() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 

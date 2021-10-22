@@ -1,5 +1,6 @@
 import { Button, Container, Logo, IconUser, UserName } from "./style.js";
-import Modal from "../Modal";
+import { IconButton } from "@material-ui/core";
+import UserPopover from "../popover/index.js";
 
 const Header = () => {
   const user = JSON.parse(localStorage.getItem("khabitz/user"));
@@ -14,7 +15,7 @@ const Header = () => {
         </Logo>
         <UserName>
           <p>{user.username}</p>
-          <Modal id="UserIcon" modalType="UpdateUserName" />
+          <UserPopover id="UserIcon"/>
         </UserName>
       </IconUser>
       <Button to='/dashboard' select={path==="/dashboard" ? 'true' : ''} >Meus Habitos</Button>
