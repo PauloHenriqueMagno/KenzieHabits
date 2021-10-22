@@ -15,8 +15,8 @@ export const StyledCard = styled(Card)({
   fontSize: 14,
   height: 180,
   maxHeight: 330,
-  minWidth: 350,
-  margin: 5,
+  minWidth: 290,
+  margin: 15,
   span: {
     color: " #F36A21",
     fontSize: "14px",
