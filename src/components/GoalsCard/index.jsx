@@ -17,12 +17,14 @@ const GoalsCard = ({
   del,
   edit,
 }) => {
-  const [achievedGoal, setAchievedGoal] = useState(achieved);
+  const [achievedGoal, setAchievedGoal] = useState(
+    how_much_achieved === 100 ? true : achieved
+  );
   const { getUserGroup } = useContext(UserGroupsContext);
 
   const handleAchieved = (event) => {
     setAchievedGoal(!achievedGoal);
-    edit({ data: { achieved: !achievedGoal }, id: id });
+    edit({ data: { achieved: !achievedGoal, title, difficulty }, id: id });
     getUserGroup();
   };
 
@@ -41,17 +43,22 @@ const GoalsCard = ({
             <br />
             <BorderLinearProgress
               variant="determinate"
-              value={how_much_achieved}
+              value={achieved ? 100 : how_much_achieved}
             />
           </Box>
           <FormGroup>
             <FormControlLabel
-              label="Finalizado?"
               control={
-                <Checkbox checked={achievedGoal} onChange={handleAchieved} />
+                <Checkbox
+                  checked={achievedGoal}
+                  onChange={handleAchieved}
+                  disabled={achieved}
+                />
               }
+              label="Finalizado?"
             />
           </FormGroup>
+
           <CardActions>
             <IconButton aria-label="add" size="small">
               <Modal modalType="UpdateGoal" goalId={id} />
