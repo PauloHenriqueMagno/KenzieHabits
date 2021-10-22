@@ -24,7 +24,7 @@ const UserGroups = () => {
         if(!!user){
             getUserGroup();
         };
-    }, []);
+    }, [getUserGroup]);
 
     return (
         <>

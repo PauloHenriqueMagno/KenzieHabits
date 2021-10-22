@@ -27,7 +27,7 @@ const LoadUserData = () => {
                 };
                 break;
         };
-    },[path]);
+    },[path, history]);
 
     return <></>;
 };

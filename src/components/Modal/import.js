@@ -14,7 +14,6 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import AddButton from "../AddButton";
 import { Edit } from "@material-ui/icons";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { IconButton } from "@material-ui/core";
 
 export default function BasicModal({
   Data,

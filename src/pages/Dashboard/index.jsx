@@ -15,7 +15,7 @@ const Dashboard = () => {
     if (!!user) {
       getHabits();
     }
-  }, []);
+  }, [getHabits]);
 
   return (
     <Container>
