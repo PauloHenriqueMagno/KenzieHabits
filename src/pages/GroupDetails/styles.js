@@ -1,4 +1,4 @@
-import { styled, Paper } from "@material-ui/core";
+import { styled, Paper, Button } from "@material-ui/core";
 
 export const Container = styled("main")({
   width: "100vw",
@@ -38,5 +38,15 @@ export const StyledPaper = styled(Paper)({
 
   "@media (min-width: 700px)": {
     marginTop: "none",
+  },
+});
+
+export const StyledButton = styled(Button)({
+  marginTop: "10px",
+  color: "#F36A21",
+  fontWeight: "bold",
+
+  ":hover": {
+    backgroundColor: "rgba(243, 106, 33, 0.1)",
   },
 });

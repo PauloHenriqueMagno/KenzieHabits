@@ -19,11 +19,10 @@ export const UserGroupsProvider = ({ children }) => {
         },
       })
       .then(() => {
-        setUserGroups(newList)
-        toast.info("Grupo criado com sucesso!")
-        console.log(userGroups)
+        setUserGroups(newList);
+        toast.info("Grupo criado com sucesso!");
       })
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro ao editar, tente novamente!"));
   };
 
   const unsubscribeOnGroup = (groupToUnsubscribe) => {
@@ -34,8 +33,11 @@ export const UserGroupsProvider = ({ children }) => {
           Authorization: `Bearer ${user.access}`,
         },
       })
-      .then((_) => getUserGroup())
-      .catch((err) => console.log(err));
+      .then((_) => {
+        toast.info("Desinscrição realizada com sucesso!");
+        getUserGroup();
+      })
+      .catch((_) => toast.error("Erro ao se inscrever, tente novamente!"));
   };
 
   const getUserGroup = () => {
@@ -47,9 +49,8 @@ export const UserGroupsProvider = ({ children }) => {
         },
       })
       .then((response) => setUserGroups(response.data))
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro ou atualizar lista, tente novamente!"));
   };
-
   return (
     <UserGroupsContext.Provider
       value={{

@@ -13,7 +13,7 @@ export const StyledCard = styled(Card)({
   borderColor: "#000000",
   color: " #ffffff",
   fontSize: 14,
-  height: 220,
+  height: 180,
   maxHeight: 330,
   minWidth: 350,
   margin: 5,

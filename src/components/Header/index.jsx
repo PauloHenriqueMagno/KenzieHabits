@@ -17,15 +17,17 @@ const Header = () => {
   return (
     <Container>
       <IconUser>
-        <Logo to='/dashboard' >K<span>HABIT</span>Z</Logo>
+        <Logo to="/dashboard">
+          K<span>HABIT</span>Z
+        </Logo>
         <UserName>
           <p>{user.username}</p>
           <Modal id="UserIcon" modalType="UpdateUserName" />
         </UserName>
       </IconUser>
-      <Button to='/dashboard' select={path==="/dashboard"} >Meus Habitos</Button>
-      <Button to='/dashboard/groups' select={path==="/dashboard/groups"} >Meus Grupos</Button>
-      <Button to='/groups' select={path==="/groups"} >Grupos</Button>
+      <Button to='/dashboard' select={path==="/dashboard" ? 'true' : ''} >Meus Habitos</Button>
+      <Button to='/dashboard/groups' select={path==="/dashboard/groups" ? 'true' : ''} >Meus Grupos</Button>
+      <Button to='/groups' select={path==="/groups" ? 'true' : ''} >Grupos</Button>
     </Container>
   );
 };

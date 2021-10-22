@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { Redirect, useHistory, useParams } from "react-router";
 import { useContext, useEffect } from "react";
 
 import Header from "../../components/Header";
@@ -7,13 +7,14 @@ import GoalsCard from "../../components/GoalsCard";
 import ActivitiesList from "../../components/ActivitiesList";
 import { UserGroupsContext } from "../../providers/UserGroups";
 import { GoalsContext } from "../../providers/Goals";
-import { Container, Content, StyledPaper } from "./styles";
+import { Container, Content, StyledPaper, StyledButton } from "./styles";
 import { Typography } from "@material-ui/core";
 import { ActivitiesContext } from "../../providers/Activities";
 
 const GroupDetails = () => {
+  const history = useHistory();
   const { groupId } = useParams();
-  const { userGroups } = useContext(UserGroupsContext);
+  const { userGroups, unsubscribeOnGroup } = useContext(UserGroupsContext);
   const { goals, deleteGoal, editGoal, getGoals } = useContext(GoalsContext);
   const { activities, getActivities } = useContext(ActivitiesContext);
 
@@ -28,7 +29,12 @@ const GroupDetails = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const { activities, goals } = group;
+  const unsubscribe = () => {
+    unsubscribeOnGroup(groupId);
+
+    history.push("/dashboard/groups");
+  };
+
   return (
     <Container>
       <Header />
@@ -60,19 +66,22 @@ const GroupDetails = () => {
             {goals.length === 0 ? (
               <Typography>Nenhum objetivo cadastrado</Typography>
             ) : (
-              goals.map((goal) => {
-                return (
-                  <GoalsCard
-                    key={goal.id}
-                    goal={goal}
-                    del={deleteGoal}
-                    edit={editGoal}
-                  />
-                );
-              })
+              goals
+                .sort((a, b) => a.id - b.id)
+                .map((goal) => {
+                  return (
+                    <GoalsCard
+                      key={goal.id}
+                      goal={goal}
+                      del={deleteGoal}
+                      edit={editGoal}
+                    />
+                  );
+                })
             )}
           </div>
         </StyledPaper>
+        <StyledButton onClick={unsubscribe}>Sair do grupo</StyledButton>
       </Content>
     </Container>
   );

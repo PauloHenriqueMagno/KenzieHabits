@@ -32,7 +32,6 @@ const Signup = () => {
 
   const redirectUser = (msg) => {
     history.push("/login");
-    console.log(msg);
   };
 
   const formSubmit = (data) => {

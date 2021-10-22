@@ -39,8 +39,8 @@ const Cards = ({
         title,
         difficulty,
         frequency,
-        id,
       },
+      id,
     });
     getHabits();
   };
@@ -71,6 +71,7 @@ const Cards = ({
                 <Checkbox
                   checked={achievedGoal}
                   onChange={handleAchieved}
+                  disabled={achieved}
                 />
               }
               label="Finalizado?"
