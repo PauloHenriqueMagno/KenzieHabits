@@ -19,7 +19,7 @@ const GroupsList = ({ groupList }) => {
         </div>
       </TitleDescription>
       {groupList.map((group) => (
-        <li>
+        <li key={group.id}>
           <StyledCardGroup onClick={() => history.push(`/group/${group.id}`)}>
             <h4>{maxString(group.name)}</h4>
 

@@ -1,30 +1,36 @@
-import {
-  Button,
-  Container,
-  Logo,
-  IconUser,
-  UserName,
-} from './style.js';
-import Modal from '../Modal';
+import { Button, Container, Logo, IconUser, UserName } from "./style.js";
+import { useContext } from "react";
+import { UserContext } from "../../providers/User/index.js";
+import UserPopover from "../popover";
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem("khabitz/user"));
+  const { user } = useContext(UserContext);
 
   const path = window.location.pathname;
 
-  console.log(path);
   return (
     <Container>
       <IconUser>
-        <Logo to='/dashboard' >K<span>HABIT</span>Z</Logo>
+        <Logo to="/dashboard">
+          K<span>HABIT</span>Z
+        </Logo>
         <UserName>
           <p>{user.username}</p>
-          <Modal id="UserIcon" modalType="UpdateUserName" />
+          <UserPopover id="UserIcon" />
         </UserName>
       </IconUser>
-      <Button to='/dashboard' select={path==="/dashboard"} >Meus Habitos</Button>
-      <Button to='/dashboard/groups' select={path==="/dashboard/groups"} >Meus Grupos</Button>
-      <Button to='/groups' select={path==="/groups"} >Grupos</Button>
+      <Button to="/dashboard" select={path === "/dashboard" ? "true" : ""}>
+        Meus Habitos
+      </Button>
+      <Button
+        to="/dashboard/groups"
+        select={path === "/dashboard/groups" ? "true" : ""}
+      >
+        Meus Grupos
+      </Button>
+      <Button to="/groups" select={path === "/groups" ? "true" : ""}>
+        Grupos
+      </Button>
     </Container>
   );
 };

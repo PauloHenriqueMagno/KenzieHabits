@@ -8,7 +8,7 @@ import {
   Box,
 } from "@material-ui/core";
 import { StyledCard, BorderLinearProgress } from "./style.js";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Modal from "../../components/Modal";
 import { HabitsContext } from "../../providers/Habits";
 
@@ -25,22 +25,18 @@ const Cards = ({
   del,
   edit,
 }) => {
-  const [achievedGoal, setAchievedGoal] = useState(
-    how_much_achieved === 100 ? true : achieved
-  );
   const { getHabits } = useContext(HabitsContext);
 
-  const handleAchieved = (event) => {
-    setAchievedGoal(!achievedGoal);
+  const handleAchieved = () => {
     edit({
       data: {
-        achieved: !achievedGoal,
+        achieved: !achieved,
         category,
         title,
         difficulty,
         frequency,
-        id,
       },
+      id,
     });
     getHabits();
   };
@@ -69,8 +65,9 @@ const Cards = ({
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={achievedGoal}
+                  checked={achieved}
                   onChange={handleAchieved}
+                  disabled={achieved}
                 />
               }
               label="Finalizado?"

@@ -19,13 +19,11 @@ export const HabitsProvider = ({ children }) => {
         setHabits([...habits, response.data]);
         toast.info(`Hábito criado com sucesso!`);
       })
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro adicionar hábito, tente novamente"));
   };
 
   const editHabit = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-
-    console.log(data);
 
     api
       .patch(`/habits/${id}/`, data, {
@@ -35,9 +33,7 @@ export const HabitsProvider = ({ children }) => {
         toast.info(`Hábito atualizado com sucesso!`);
         getHabits();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((_) => toast.error("Erro editar, tente novamente"));
   };
 
   const deleteHabit = (habitToDelete) => {
@@ -45,7 +41,6 @@ export const HabitsProvider = ({ children }) => {
       (habitOnList) => habitOnList.id !== habitToDelete
     );
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
-    console.log(user);
     api
       .delete(`/habits/${habitToDelete}/`, {
         headers: {
@@ -54,7 +49,7 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((_) => toast.info("Hábito excluido!"))
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro ao deletar, tente novamente"));
     setHabits(newHabitsList);
   };
 
@@ -67,7 +62,9 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((response) => setHabits(response.data))
-      .catch((err) => console.log(err));
+      .catch((_) =>
+        toast.error("Erro ao atualizar lista de hábitos, tente novamente")
+      );
   };
 
   return (

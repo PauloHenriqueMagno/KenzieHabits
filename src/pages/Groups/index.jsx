@@ -63,14 +63,16 @@ const Groups = () => {
             <div className="groupsListTitles">
               <Typography>Categoria:</Typography>
             </div>
-            <StyledTablePagination
-              component="div"
-              count={groups.count}
-              page={page}
-              onPageChange={handlePage}
-              rowsPerPage={15}
-              rowsPerPageOptions={[15]}
-            />
+            {groups.count && (
+              <StyledTablePagination
+                component="div"
+                count={groups.count}
+                page={page}
+                onPageChange={handlePage}
+                rowsPerPage={15}
+                rowsPerPageOptions={[15]}
+              />
+            )}
           </StyledBox>
           {groups.results?.map((group) => {
             return (
