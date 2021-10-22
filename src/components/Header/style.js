@@ -73,7 +73,7 @@ export const UserName = styled("div")({
   },
 
   svg: {
-    width: "100%",
+    width: "200%",
     color: "#FFF",
     fontSize: "40px",
   },

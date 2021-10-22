@@ -22,7 +22,7 @@ const Header = () => {
         </Logo>
         <UserName>
           <p>{user.username}</p>
-          <Modal id="UserIcon" modalType="UpdateUserName" />
+          <UserPopover id="UserIcon"/>
         </UserName>
       </IconUser>
       <Button to='/dashboard' select={path==="/dashboard" ? 'true' : ''} >Meus Habitos</Button>
