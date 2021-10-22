@@ -25,10 +25,10 @@ export const HabitsProvider = ({ children }) => {
   const editHabit = ({ data, id }) => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
 
-    console.log(data);
+    console.log(data, id);
 
     api
-      .patch(`/habits/${id}/`, data, {
+      .patch(`/habits/${data.id}/`, data, {
         headers: { Authorization: `Bearer ${user.access}` },
       })
       .then(() => {
