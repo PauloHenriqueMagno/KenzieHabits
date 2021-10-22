@@ -6,13 +6,14 @@ import {
   UserName,
 } from './style.js';
 import Modal from '../Modal';
+import { useContext } from 'react';
+import { UserContext } from '../../providers/User/index.js';
 
 const Header = () => {
-  const user = JSON.parse(localStorage.getItem("khabitz/user"));
+  const { user } = useContext(UserContext);
 
   const path = window.location.pathname;
 
-  console.log(path);
   return (
     <Container>
       <IconUser>
