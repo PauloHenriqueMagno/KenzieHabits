@@ -11,14 +11,12 @@ export const OpenModalCreateGroup = styled("div")({
     
     "@media (min-width: 700px)": {
         display: "flex",
-        width: "100%",
         padding: "15px 0 0 0",
         marginTop: "auto",
         justifyContent: "flex-end",
         
         div: {
             position: "initial",
-            width: "min-content",
         }
     }
 });
@@ -44,7 +42,7 @@ export const Container = styled("div")({
     maxWidth: "1280px",
     minHeight: "60vh",
     margin: "0 auto 20px",
-    borderRadius: "8px",
+    borderRadius: "1%",
     gap: "15px",
     
     h3: {
@@ -55,5 +53,6 @@ export const Container = styled("div")({
         backgroundColor: "#F2F2F2",
         display: "flex",
         flexDirection: "column",
+        width: "90%",
     },
 });
