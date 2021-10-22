@@ -6,7 +6,6 @@ const Header = () => {
 
   const path = window.location.pathname;
 
-  console.log(path);
   return (
     <Container>
       <IconUser>

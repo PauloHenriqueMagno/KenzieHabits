@@ -25,10 +25,8 @@ export const GroupsProvider = ({ children }) => {
       )
       .then((response) => {
         toast.info(`Inscrição realizada com sucesso!`);
-        setGroups([...groups, response.data]);
-        console.log(groups);
       })
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro ao se inscrever, tente novamente"));
   };
 
   const createGroup = (newGroup) => {
@@ -43,7 +41,7 @@ export const GroupsProvider = ({ children }) => {
         getUserGroup();
         toast.info(`Grupo criado com sucesso!`);
       })
-      .catch((err) => console.log(err));
+      .catch((_) => toast.error("Erro ao criar grupo, tente novamente"));
   };
 
   const getGroups = (category = "", page = undefined) => {

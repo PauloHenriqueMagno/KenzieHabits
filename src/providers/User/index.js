@@ -21,10 +21,10 @@ export const UserProvider = ({ children }) => {
           Authorization: `Bearer ${userInfo.access}`,
         },
       })
-      .then(
-        toast.info("Usuário atualizado com sucesso")
-      )
-      .catch((err) => console.log(err));
+      .then(toast.info("Usuário atualizado com sucesso"))
+      .catch((_) =>
+        toast.error("Erro ao editar suas informações, tente novamente!")
+      );
   };
 
   return (
