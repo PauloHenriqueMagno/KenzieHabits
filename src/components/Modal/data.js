@@ -125,8 +125,8 @@ const createGroupData = {
   },
   label_register: [
     { type: "text", text: "título do grupo", name: "name" },
-    { type: "text", text: "categoria", name: "description" },
-    { type: "text", text: "descrição", name: "category" },
+    { type: "text", text: "categoria", name: "category" },
+    { type: "text", text: "descrição", name: "description" },
   ],
   dataCaptor: (data) => {
     const { name, description, category } = data;
@@ -217,6 +217,7 @@ const updateGoalData = {
       title: title,
       difficulty: difficulty,
       how_much_achieved: how_much_achieved,
+      achieved: how_much_achieved === 100,
     };
     return newData;
   },
