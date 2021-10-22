@@ -17,47 +17,6 @@ const UserGroups = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("khabitz/user"));
 
-<<<<<<< HEAD
-    const myGroups = userGroups.filter(group => group.creator.id === user.id);
-    const groups = userGroups.filter(group => group.creator.id !== user.id);
-
-    useEffect(()=>{
-        const user = JSON.parse(localStorage.getItem("khabitz/user"));
-
-        if(!!user){
-            getUserGroup();
-        };
-    }, [getUserGroup]);
-
-    return (
-        <>
-            <Header />
-            <Container>
-                <GroupBox>
-                    <h3>Meus Grupos</h3>
-                    {
-                    myGroups.length===0?
-                        <p>Você não possui grupos</p>
-                        :
-                        <GroupsList groupList={myGroups} />
-                    }
-                </GroupBox>
-                <GroupBox>
-                    <h3>Grupos inscritos</h3>
-                    {
-                    myGroups.length===0?
-                        <p>Você não está inscrito em nenhum grupo</p>
-                        :
-                        <GroupsList groupList={groups} />
-                    }
-                </GroupBox>
-                <OpenModalCreateGroup>
-                    <Modal modalType="CreateGroup" />
-                </OpenModalCreateGroup>
-            </Container>
-        </>
-    );
-=======
     if (!!user) {
       getUserGroup();
     }
@@ -90,7 +49,6 @@ const UserGroups = () => {
       </Container>
     </>
   );
->>>>>>> ee86184d7005fcb2a7da70b3ab54117476bf4e49
 };
 
 export default UserGroups;
