@@ -28,7 +28,7 @@ export const GroupBox = styled("section")({
         border: "1px solid #1F1F1E",
         borderWidth: "1px 0 0 0",
 
-        "&:first-child": {
+        "&:first-of-type": {
             borderWidth: "0 0 0 0",
         },
     },

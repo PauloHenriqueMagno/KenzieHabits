@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const LoadUserData = () => {
     const history = useHistory();
     
-    const [path, setPath] = useState(window.location.pathname);
+    const [path] = useState(window.location.pathname);
 
     useEffect(()=>{
         const user = JSON.parse(localStorage.getItem("khabitz/user"));
