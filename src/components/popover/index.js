@@ -51,7 +51,7 @@ export default function UserPopover() {
             <Button
               onClick={() => {
                 history.push("/");
-                JSON.parse(localStorage.removeItem("khabitz/user"));
+                localStorage.removeItem("khabitz/user");
               }}
             >
               Sair do usuário
